@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/Otobook-vn/modules/utils"
+	"github.com/kr/pretty"
 )
 
 // Log ...
@@ -13,6 +14,7 @@ type Log struct {
 	Carrier     string
 	Type        string
 	PhoneNumber string
+	Code        string
 	Content     string
 	IP          string
 	Success     bool
@@ -47,13 +49,15 @@ func (s Service) checkCanSend(phone, ip string) bool {
 
 	// Check phone number first
 	if len(phone) > 0 && s.PhoneMaxSendPerDay > 0 {
-		s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND created_at >= ?", phone, startOfToday).Count(&count)
+		s.PostgreSQL.Debug().Model(Log{}).Where("phone_number = ? AND created_at >= ?", phone, startOfToday).Count(&count)
+		pretty.Println("total phone", count)
 		canSend = count > int64(s.PhoneMaxSendPerDay)
 	}
 
 	// Check ip, but only check if can send
 	if canSend && len(ip) > 0 && s.IPMaxSendPerDay > 0 {
-		s.PostgreSQL.Model(Log{}).Where("ip = ? AND created_at >= ?", ip, startOfToday).Count(&count)
+		s.PostgreSQL.Debug().Model(Log{}).Where("ip = ? AND created_at >= ?", ip, startOfToday).Count(&count)
+		pretty.Println("total ip", count)
 		canSend = count > int64(s.IPMaxSendPerDay)
 	}
 

@@ -11,7 +11,6 @@ import (
 	"time"
 
 	"github.com/Otobook-vn/modules/utils"
-	"github.com/kr/pretty"
 	"gorm.io/gorm"
 )
 
@@ -78,7 +77,7 @@ func NewInstance(config Config) (*Service, error) {
 
 // SendOTP to phone number
 // Phone format: 84935123456
-func (s Service) SendOTP(phone, ip, content string) error {
+func (s Service) SendOTP(phone, ip, content, otpCode string) error {
 	// Just remove char "+" if existed
 	strings.Replace(phone, "+", "", 1)
 
@@ -97,9 +96,6 @@ func (s Service) SendOTP(phone, ip, content string) error {
 	params.Add("phone", phone)
 	params.Add("sms", content)
 	payload := strings.NewReader(params.Encode())
-
-	pretty.Println("params", params)
-	pretty.Println("payload", payload)
 
 	// Create request
 	client := s.Client
@@ -139,6 +135,7 @@ func (s Service) SendOTP(phone, ip, content string) error {
 			ID:          utils.NewUUID(),
 			Carrier:     result.Carrier,
 			Type:        "otp",
+			Code:        otpCode,
 			PhoneNumber: phone,
 			IP:          ip,
 			Content:     content,
