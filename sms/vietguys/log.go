@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/Otobook-vn/modules/utils"
+	"github.com/kr/pretty"
 )
 
 const (
@@ -74,7 +75,12 @@ func (s Service) checkOTP(phone, otpCode string) bool {
 		count   int64 = 0
 	)
 
-	s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND code = ? AND is_code_valid = ? AND created_at >= ?", phone, otpCode, true, timeAgo).Count(&count)
+	pretty.Println("phone", phone)
+	pretty.Println("otpCode", otpCode)
+	pretty.Println("timeAgo", timeAgo.String())
+
+	s.PostgreSQL.Debug().Model(Log{}).Where("phone_number = ? AND code = ? AND is_code_valid = ? AND created_at >= ?", phone, otpCode, true, timeAgo).Count(&count)
+	pretty.Println("count", count)
 	isValid := count > 0
 	// If success, set code valid to false
 	if isValid {
