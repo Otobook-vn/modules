@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/Otobook-vn/modules/utils"
+	"github.com/kr/pretty"
 	"gorm.io/gorm"
 )
 
@@ -96,6 +97,9 @@ func (s Service) SendOTP(phone, content, ip string) error {
 	params.Add("phone", phone)
 	params.Add("sms", content)
 	payload := strings.NewReader(params.Encode())
+
+	pretty.Println("params", params)
+	pretty.Println("payload", payload)
 
 	// Create request
 	client := s.Client
