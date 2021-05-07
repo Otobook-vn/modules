@@ -5,7 +5,10 @@ import (
 	"time"
 
 	"github.com/Otobook-vn/modules/utils"
-	"github.com/kr/pretty"
+)
+
+const (
+	otpValidMinute = 30
 )
 
 // Log ...
@@ -24,6 +27,7 @@ type Log struct {
 	tableName string
 }
 
+// TableName ...
 func (l Log) TableName() string {
 	if l.tableName != "" {
 		return l.tableName
@@ -49,17 +53,26 @@ func (s Service) checkCanSend(phone, ip string) bool {
 
 	// Check phone number first
 	if len(phone) > 0 && s.PhoneMaxSendPerDay > 0 {
-		s.PostgreSQL.Debug().Model(Log{}).Where("phone_number = ? AND created_at >= ?", phone, startOfToday).Count(&count)
-		pretty.Println("total phone", count)
+		s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND created_at >= ?", phone, startOfToday).Count(&count)
 		canSend = count > int64(s.PhoneMaxSendPerDay)
 	}
 
 	// Check ip, but only check if can send
 	if canSend && len(ip) > 0 && s.IPMaxSendPerDay > 0 {
-		s.PostgreSQL.Debug().Model(Log{}).Where("ip = ? AND created_at >= ?", ip, startOfToday).Count(&count)
-		pretty.Println("total ip", count)
+		s.PostgreSQL.Model(Log{}).Where("ip = ? AND created_at >= ?", ip, startOfToday).Count(&count)
 		canSend = count > int64(s.IPMaxSendPerDay)
 	}
 
 	return canSend
+}
+
+// Check otp right or not
+func (s Service) checkOTP(phone, otpCode string) bool {
+	var (
+		minAgo       = utils.MinBeforeNow(otpValidMinute)
+		count  int64 = 0
+	)
+
+	s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND code = ? AND created_at >= ?", phone, otpCode, minAgo).Count(&count)
+	return count > 0
 }

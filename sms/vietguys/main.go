@@ -148,3 +148,11 @@ func (s Service) SendOTP(phone, ip, content, otpCode string) error {
 
 	return nil
 }
+
+// VerifyOTP verify otp code is right or not
+func (s Service) VerifyOTP(phone, otpCode string) bool {
+	// Just remove char "+" if existed
+	strings.Replace(phone, "+", "", 1)
+
+	return s.checkOTP(phone, otpCode)
+}
