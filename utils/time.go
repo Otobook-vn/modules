@@ -9,5 +9,5 @@ func StartOfDay(t time.Time) time.Time {
 
 // TimeBeforeNowInMin ...
 func TimeBeforeNowInMin(min int) time.Time {
-	return time.Now().Add(time.Minute * time.Duration(min)).UTC()
+	return time.Now().Add(time.Minute * time.Duration(min) * -1).UTC()
 }
