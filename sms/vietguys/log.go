@@ -49,13 +49,13 @@ func (s Service) checkCanSend(phone, ip string) bool {
 	)
 
 	// Check phone number first
-	if s.PhoneMaxSendPerDay > 0 {
+	if len(phone) > 0 && s.PhoneMaxSendPerDay > 0 {
 		s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND created_at >=", phone, startOfToday).Count(&count)
 		canSend = count > int64(s.PhoneMaxSendPerDay)
 	}
 
 	// Check ip, but only check if can send
-	if canSend && s.IPMaxSendPerDay > 0 {
+	if canSend && len(ip) > 0 && s.IPMaxSendPerDay > 0 {
 		s.PostgreSQL.Model(Log{}).Where("ip = ? AND created_at >=", ip, startOfToday).Count(&count)
 		canSend = count > int64(s.IPMaxSendPerDay)
 	}

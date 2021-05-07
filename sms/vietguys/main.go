@@ -70,13 +70,16 @@ func NewInstance(config Config) (*Service, error) {
 	return &s, nil
 }
 
-// SendOTP ...
-func (s Service) SendOTP(phone, content, ip string) (success bool, result Result, rawResult string) {
+// SendOTP to phone number
+// Phone format: 84935123456
+func (s Service) SendOTP(phone, content, ip string) error {
+	// Just remove char "+" if existed
+	strings.Replace(phone, "+", "", 1)
+
 	// Check that phone or ip is not over quota
 	canSend := s.checkCanSend(phone, ip)
 	if canSend {
-		result.Message = "ip or phone reach over limited quota per day"
-		return
+		return errors.New("ip or phone has reached over limited quota per day")
 	}
 
 	// Create payload
@@ -93,7 +96,7 @@ func (s Service) SendOTP(phone, content, ip string) (success bool, result Result
 	client := s.Client
 	req, err := http.NewRequest(http.MethodPost, s.Endpoint, payload)
 	if err != nil {
-		return
+		return err
 	}
 
 	// Add necessary headers
@@ -102,7 +105,7 @@ func (s Service) SendOTP(phone, content, ip string) (success bool, result Result
 	// Call
 	res, err := client.Do(req)
 	if err != nil {
-		return
+		return err
 	}
 
 	// Make sure close body
@@ -110,21 +113,17 @@ func (s Service) SendOTP(phone, content, ip string) (success bool, result Result
 
 	// Ready body
 	body, err := ioutil.ReadAll(res.Body)
-	rawResult = string(body)
+	rawResult := string(body)
 	fmt.Println(rawResult)
-
 	if err != nil {
 		fmt.Println("error : ", err.Error())
-		return
+		return err
 	}
+
+	var result Result
 	if err = json.Unmarshal(body, &result); err != nil {
-		return
+		return err
 	}
-
-	if result.Error == 0 {
-		success = true
-	}
-
 	// Save log to db
 	if s.PostgreSQL != nil {
 		log := Log{
@@ -135,11 +134,11 @@ func (s Service) SendOTP(phone, content, ip string) (success bool, result Result
 			IP:          ip,
 			Content:     content,
 			CreatedAt:   time.Now().UTC(),
-			Success:     success,
+			Success:     result.Error == 0,
 			Result:      rawResult,
 		}
 		s.saveLog(log)
 	}
 
-	return
+	return nil
 }
