@@ -18,6 +18,7 @@ type Log struct {
 	Type        string
 	PhoneNumber string
 	Code        string
+	IsCodeValid bool
 	Content     string
 	IP          string
 	Success     bool
@@ -69,10 +70,15 @@ func (s Service) checkCanSend(phone, ip string) bool {
 // Check otp right or not
 func (s Service) checkOTP(phone, otpCode string) bool {
 	var (
-		minAgo       = utils.MinBeforeNow(otpValidMinute)
-		count  int64 = 0
+		timeAgo       = utils.TimeBeforeNowInMin(otpValidMinute)
+		count   int64 = 0
 	)
 
-	s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND code = ? AND created_at >= ?", phone, otpCode, minAgo).Count(&count)
-	return count > 0
+	s.PostgreSQL.Model(Log{}).Where("phone_number = ? AND code = ? AND is_code_valid = ? AND created_at >= ?", phone, otpCode, true, timeAgo).Count(&count)
+	isValid := count > 0
+	// If success, set code valid to false
+	if isValid {
+		s.PostgreSQL.Model(Log{}).Where("code = ?", otpCode).Update("is_code_valid", false)
+	}
+	return isValid
 }

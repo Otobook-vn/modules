@@ -136,6 +136,7 @@ func (s Service) SendOTP(phone, ip, content, otpCode string) error {
 			Carrier:     result.Carrier,
 			Type:        "otp",
 			Code:        otpCode,
+			IsCodeValid: true,
 			PhoneNumber: phone,
 			IP:          ip,
 			Content:     content,
