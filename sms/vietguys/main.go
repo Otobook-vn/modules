@@ -61,10 +61,15 @@ func NewInstance(config Config) (*Service, error) {
 		Client: &http.Client{},
 	}
 
-	// TODO: add index for db (field phone, ip, created_at)
-	//
 	if s.PostgreSQL != nil {
+		if err := config.PostgreSQL.AutoMigrate(
+			&Log{},
+		); err != nil {
+			return nil, errors.New("error when create new database table for logging")
+		}
 
+		// TODO: add index for db (field phone, ip, created_at)
+		//
 	}
 
 	return &s, nil
