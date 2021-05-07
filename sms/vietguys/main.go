@@ -10,11 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/google/uuid"
+	"github.com/Otobook-vn/modules/utils"
 	"gorm.io/gorm"
 )
-
-// Send SMS with Vietguys service
 
 // Config ...
 type Config struct {
@@ -28,13 +26,27 @@ type Config struct {
 	From string
 	// Postgresql instance, for saving logs
 	PostgreSQL *gorm.DB
-	// Table name
-	TableName string
+	// Log table name
+	LogTableName string
+	// Limit send time per ip
+	IPMaxSendPerDay int
+	// Limit send time per phone number
+	PhoneMaxSendPerDay int
+}
+
+// Result ...
+type Result struct {
+	Carrier   string
+	Error     int
+	ErrorCode int
+	MsgID     string
+	Message   string
+	Log       string
 }
 
 // Service ...
 type Service struct {
-	Config Config
+	Config
 	Client *http.Client
 }
 
@@ -48,16 +60,30 @@ func NewInstance(config Config) (*Service, error) {
 		Config: config,
 		Client: &http.Client{},
 	}
+
+	// TODO: add index for db (field phone, ip, created_at)
+	//
+	if s.PostgreSQL != nil {
+
+	}
+
 	return &s, nil
 }
 
 // SendOTP ...
-func (s Service) SendOTP(phone, content string) (success bool, result Result, rawResult string) {
+func (s Service) SendOTP(phone, content, ip string) (success bool, result Result, rawResult string) {
+	// Check that phone or ip is not over quota
+	canSend := s.checkCanSend(phone, ip)
+	if canSend {
+		result.Message = "ip or phone reach over limited quota per day"
+		return
+	}
+
 	// Create payload
 	params := url.Values{}
-	params.Add("u", s.Config.User)
-	params.Add("pwd", s.Config.Password)
-	params.Add("from", s.Config.From)
+	params.Add("u", s.User)
+	params.Add("pwd", s.Password)
+	params.Add("from", s.From)
 	params.Add("json", "1")
 	params.Add("phone", phone)
 	params.Add("sms", content)
@@ -65,7 +91,7 @@ func (s Service) SendOTP(phone, content string) (success bool, result Result, ra
 
 	// Create request
 	client := s.Client
-	req, err := http.NewRequest(http.MethodPost, s.Config.Endpoint, payload)
+	req, err := http.NewRequest(http.MethodPost, s.Endpoint, payload)
 	if err != nil {
 		return
 	}
@@ -100,24 +126,20 @@ func (s Service) SendOTP(phone, content string) (success bool, result Result, ra
 	}
 
 	// Save log to db
-	if s.Config.PostgreSQL != nil {
+	if s.PostgreSQL != nil {
 		log := Log{
-			ID:        newUUID(),
-			Carrier:   result.Carrier,
-			Type:      "otp",
-			Recipient: phone,
-			Content:   content,
-			CreatedAt: time.Now().UTC(),
-			Success:   success,
-			Result:    rawResult,
+			ID:          utils.NewUUID(),
+			Carrier:     result.Carrier,
+			Type:        "otp",
+			PhoneNumber: phone,
+			IP:          ip,
+			Content:     content,
+			CreatedAt:   time.Now().UTC(),
+			Success:     success,
+			Result:      rawResult,
 		}
 		s.saveLog(log)
 	}
 
 	return
-}
-
-func newUUID() string {
-	value, _ := uuid.NewRandom()
-	return value.String()
 }
