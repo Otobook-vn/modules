@@ -63,7 +63,7 @@ func NewInstance(config Config) (*Service, error) {
 
 	if s.PostgreSQL != nil {
 		if err := config.PostgreSQL.AutoMigrate(
-			&Log{},
+			&Log{tableName: config.LogTableName},
 		); err != nil {
 			return nil, errors.New("error when create new database table for logging")
 		}

@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/Otobook-vn/modules/utils"
-	"gorm.io/gorm"
 )
 
 // Log ...
@@ -19,22 +18,20 @@ type Log struct {
 	Success     bool
 	Result      string
 	CreatedAt   time.Time
+
+	tableName string
 }
 
-// LogTable define table will save data
-func LogTable(tableName string) func(tx *gorm.DB) *gorm.DB {
-	return func(tx *gorm.DB) *gorm.DB {
-		if tableName == "" {
-			return tx.Table("vietguys_logs")
-		}
-
-		return tx.Table(tableName)
+func (l Log) TableName() string {
+	if l.tableName != "" {
+		return l.tableName
 	}
+	return "vietguys_logs"
 }
 
 // Save log to db
 func (s Service) saveLog(doc Log) {
-	if err := s.PostgreSQL.Model(Log{}).Scopes(LogTable(s.LogTableName)).Create(doc).Error; err != nil {
+	if err := s.PostgreSQL.Model(Log{}).Scopes().Create(doc).Error; err != nil {
 		fmt.Println("*** Error when create log", err)
 		fmt.Println("*** Log", doc)
 	}
