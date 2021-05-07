@@ -78,7 +78,7 @@ func NewInstance(config Config) (*Service, error) {
 
 // SendOTP to phone number
 // Phone format: 84935123456
-func (s Service) SendOTP(phone, content, ip string) error {
+func (s Service) SendOTP(phone, ip, content string) error {
 	// Just remove char "+" if existed
 	strings.Replace(phone, "+", "", 1)
 
