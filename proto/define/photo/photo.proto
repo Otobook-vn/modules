@@ -17,8 +17,9 @@ message GetPhotoByIDsResponse {
 
 message PhotoDetail{
   string id = 1;
-  PhotoSize small = 2;
-  PhotoSize medium = 3;
+  string name = 2;
+  PhotoSize small = 3;
+  PhotoSize medium = 4;
 }
 
 message PhotoSize {
