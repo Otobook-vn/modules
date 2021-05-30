@@ -6,14 +6,6 @@ import (
 	"strings"
 
 	"firebase.google.com/go/v4/messaging"
-	"github.com/thoas/go-funk"
-)
-
-// List allowed topics
-const (
-	AllowedTopicAll     = "all"
-	AllowedTopicIOS     = "iOS"
-	AllowedTopicAndroid = "android"
 )
 
 var allowedTopics = []string{AllowedTopicAll, AllowedTopicIOS, AllowedTopicAndroid}
@@ -24,7 +16,7 @@ func SendByTopics(topics []string, batchID string, payload messaging.Message) {
 
 	// Return if have no topics
 	if len(topics) == 0 {
-		fmt.Println(fmt.Sprintf("*** Empty topics array with batch id %s", batchID))
+		fmt.Sprintf("*** Empty topics array with batch id %s \n", batchID)
 		return
 	}
 
@@ -33,36 +25,31 @@ func SendByTopics(topics []string, batchID string, payload messaging.Message) {
 
 	// Return if there is no condition
 	if payload.Condition == "" {
-		fmt.Println(fmt.Sprintf("*** No valid topics array with batch id %s: %v", batchID, topics))
+		fmt.Sprintf("*** No valid topics array with batch id %s: %v \n", batchID, topics)
 		return
 	}
 
 	_, err := client.Send(ctx, &payload)
 	if err != nil {
-		fmt.Println(fmt.Sprintf("*** Send topic error with batch id %s: %s", batchID, err.Error()))
-		fmt.Println("*** Topics:", topics)
+		fmt.Sprintf("*** Send topic error with batch id %s: %s \n", batchID, err.Error())
+		fmt.Sprintf("*** Topics: %v \n", topics)
 	}
 }
 
 // getTopicCondition ...
 func getTopicCondition(topics []string) string {
-	var topicCond []string
+	var conditions []string
 
 	for _, topic := range topics {
 		if !isTopicAllowed(topic) {
 			continue
 		}
 		cond := fmt.Sprintf("'%s' in topics", topic)
-		topicCond = append(topicCond, cond)
+		conditions = append(conditions, cond)
 	}
 
-	if len(topicCond) == 0 {
+	if len(conditions) == 0 {
 		return ""
 	}
-	return strings.Join(topicCond, " && ")
-}
-
-// isTopicAllowed ...
-func isTopicAllowed(topic string) bool {
-	return funk.ContainsString(allowedTopics, topic)
+	return strings.Join(conditions, " && ")
 }

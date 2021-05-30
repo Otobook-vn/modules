@@ -7,6 +7,7 @@ import (
 
 	firebase "firebase.google.com/go/v4"
 	"firebase.google.com/go/v4/messaging"
+	"github.com/thoas/go-funk"
 	"google.golang.org/api/option"
 )
 
@@ -26,6 +27,13 @@ type Result struct {
 	Failure     int
 	ErrorTokens []string
 }
+
+// List allowed topics
+const (
+	AllowedTopicAll     = "all"
+	AllowedTopicIOS     = "iOS"
+	AllowedTopicAndroid = "android"
+)
 
 var client *messaging.Client
 
@@ -56,4 +64,9 @@ func Init(cfg Config) error {
 func base64Decode(text string) []byte {
 	sDec, _ := b64.StdEncoding.DecodeString(text)
 	return sDec
+}
+
+// isTopicAllowed ...
+func isTopicAllowed(topic string) bool {
+	return funk.ContainsString(allowedTopics, topic)
 }

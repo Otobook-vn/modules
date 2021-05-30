@@ -35,7 +35,7 @@ func SendByTokens(tokens []string, batchID string, payload messaging.Message) (r
 		// Send
 		resp, err := client.SendMulticast(ctx, message)
 		if err != nil {
-			fmt.Println(fmt.Printf("Error when push notification with sendID %s, error: %s", batchID, err.Error()))
+			fmt.Printf("*** Error when push notification with batchID %s, error: %s \n", batchID, err.Error())
 			return
 		}
 
@@ -46,7 +46,7 @@ func SendByTokens(tokens []string, batchID string, payload messaging.Message) (r
 		tokens = restTokens
 	}
 
-	return Result{}, nil
+	return
 }
 
 // separate tokens for multiple times send, due to FCM limited
