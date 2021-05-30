@@ -4,10 +4,12 @@ import (
 	"context"
 	"errors"
 	"fmt"
+
+	"github.com/Otobook-vn/modules/utils"
 )
 
 // UnsubscribeTokensFromTopic ...
-func UnsubscribeTokensFromTopic(topic string, tokens []string) error {
+func (s Service) UnsubscribeTokensFromTopic(batchID, topic string, tokens []string) error {
 	if topic == "" || len(tokens) == 0 {
 		return errors.New("invalid data")
 	}
@@ -17,7 +19,7 @@ func UnsubscribeTokensFromTopic(topic string, tokens []string) error {
 	}
 
 	ctx := context.Background()
-	resp, err := client.UnsubscribeFromTopic(ctx, tokens, topic)
+	resp, err := s.Client.UnsubscribeFromTopic(ctx, tokens, topic)
 	if err != nil {
 		fmt.Printf("*** Unsubscribe tokens from topic %s error: %s \n", topic, err.Error())
 		return err
@@ -27,5 +29,21 @@ func UnsubscribeTokensFromTopic(topic string, tokens []string) error {
 	if len(resp.Errors) > 0 {
 		return errors.New(resp.Errors[0].Reason)
 	}
+
+	// Save log
+	go func() {
+		log := Log{
+			ID:           utils.GenerateUUID(),
+			Action:       LogActionUnsubscribeTokens,
+			BatchID:      batchID,
+			Topics:       utils.ConvertToDataTypesJSON([]string{topic}),
+			TokenCount:   len(tokens),
+			SuccessCount: 0,
+			FailureCount: 0,
+			CreatedAt:    utils.TimeNowUTC(),
+		}
+		s.saveLog(log)
+	}()
+
 	return nil
 }

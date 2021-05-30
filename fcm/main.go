@@ -9,15 +9,19 @@ import (
 	"firebase.google.com/go/v4/messaging"
 	"github.com/thoas/go-funk"
 	"google.golang.org/api/option"
+	"gorm.io/gorm"
 )
 
 // Config ...
 type Config struct {
 	// Project id
 	ProjectID string
-
 	// Original is JSON format, but encoded with base64, need to call base64 decode to get byte data
 	Credential string
+	// Postgresql instance, for saving logs
+	PostgreSQL *gorm.DB
+	// Log table name
+	LogTableName string
 }
 
 // Result of each send
@@ -35,10 +39,14 @@ const (
 	AllowedTopicAndroid = "android"
 )
 
-var client *messaging.Client
+// Service ...
+type Service struct {
+	Config
+	Client *messaging.Client
+}
 
-// Init ...
-func Init(cfg Config) error {
+// NewInstance for push notification
+func NewInstance(cfg Config) (*Service, error) {
 	ctx := context.Background()
 
 	// Setup
@@ -48,16 +56,32 @@ func Init(cfg Config) error {
 		ProjectID: cfg.ProjectID,
 	}, opts)
 	if err != nil {
-		return errors.New("error when init Firebase app")
+		return nil, errors.New("error when init Firebase app")
+	}
+
+	// Init db
+	if cfg.PostgreSQL != nil {
+		if err = cfg.PostgreSQL.AutoMigrate(
+			&Log{tableName: cfg.LogTableName},
+		); err != nil {
+			return nil, errors.New("error when create new fcm log table for logging")
+		}
+
+		// TODO: add index for db (field action, created_at)
+		//
 	}
 
 	// Init messaging client
-	client, err = app.Messaging(ctx)
+	client, err := app.Messaging(ctx)
 	if err != nil {
-		return errors.New("error when init Firebase messaging client")
+		return nil, errors.New("error when init Firebase messaging client")
 	}
 
-	return nil
+	s := Service{
+		Config: cfg,
+		Client: client,
+	}
+	return &s, nil
 }
 
 // base64Decode ...

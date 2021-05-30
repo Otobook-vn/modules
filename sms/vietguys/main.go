@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"time"
 
 	"github.com/Otobook-vn/modules/utils"
 	"gorm.io/gorm"
@@ -56,22 +55,21 @@ func NewInstance(config Config) (*Service, error) {
 		return nil, errors.New("please provide all information that needed: endpoint, user, password, from")
 	}
 
-	s := Service{
-		Config: config,
-		Client: &http.Client{},
-	}
-
-	if s.PostgreSQL != nil {
+	if config.PostgreSQL != nil {
 		if err := config.PostgreSQL.AutoMigrate(
 			&Log{tableName: config.LogTableName},
 		); err != nil {
-			return nil, errors.New("error when create new database table for logging")
+			return nil, errors.New("error when create new vietguys log table for logging")
 		}
 
 		// TODO: add index for db (field phone, ip, created_at)
 		//
 	}
 
+	s := Service{
+		Config: config,
+		Client: &http.Client{},
+	}
 	return &s, nil
 }
 
@@ -129,10 +127,11 @@ func (s Service) SendOTP(phone, ip, content, otpCode string) error {
 	if err = json.Unmarshal(body, &result); err != nil {
 		return err
 	}
-	// Save log to db
-	if s.PostgreSQL != nil {
+
+	go func() {
+		// Save log to db
 		log := Log{
-			ID:          utils.NewUUID(),
+			ID:          utils.GenerateUUID(),
 			Carrier:     result.Carrier,
 			Type:        "otp",
 			Code:        otpCode,
@@ -140,12 +139,12 @@ func (s Service) SendOTP(phone, ip, content, otpCode string) error {
 			PhoneNumber: phone,
 			IP:          ip,
 			Content:     content,
-			CreatedAt:   time.Now().UTC(),
+			CreatedAt:   utils.TimeNowUTC(),
 			Success:     result.Error == 0,
 			Result:      rawResult,
 		}
 		s.saveLog(log)
-	}
+	}()
 
 	return nil
 }

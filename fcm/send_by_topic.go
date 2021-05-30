@@ -6,12 +6,13 @@ import (
 	"strings"
 
 	"firebase.google.com/go/v4/messaging"
+	"github.com/Otobook-vn/modules/utils"
 )
 
 var allowedTopics = []string{AllowedTopicAll, AllowedTopicIOS, AllowedTopicAndroid}
 
 // SendByTopics ...
-func SendByTopics(topics []string, batchID string, payload messaging.Message) {
+func (s Service) SendByTopics(topics []string, batchID string, payload messaging.Message) {
 	ctx := context.Background()
 
 	// Return if have no topics
@@ -29,11 +30,26 @@ func SendByTopics(topics []string, batchID string, payload messaging.Message) {
 		return
 	}
 
-	_, err := client.Send(ctx, &payload)
+	_, err := s.Client.Send(ctx, &payload)
 	if err != nil {
 		fmt.Sprintf("*** Send topic error with batch id %s: %s \n", batchID, err.Error())
 		fmt.Sprintf("*** Topics: %v \n", topics)
 	}
+
+	// Save log
+	go func() {
+		log := Log{
+			ID:           utils.GenerateUUID(),
+			Action:       LogActionSendByTopic,
+			BatchID:      batchID,
+			Topics:       utils.ConvertToDataTypesJSON(topics),
+			TokenCount:   0,
+			SuccessCount: 0,
+			FailureCount: 0,
+			CreatedAt:    utils.TimeNowUTC(),
+		}
+		s.saveLog(log)
+	}()
 }
 
 // getTopicCondition ...

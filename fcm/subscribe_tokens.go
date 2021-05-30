@@ -5,10 +5,11 @@ import (
 	"fmt"
 
 	"firebase.google.com/go/v4/messaging"
+	"github.com/Otobook-vn/modules/utils"
 )
 
 // SubscribeTokensToTopic ...
-func SubscribeTokensToTopic(topic string, tokens []string) (result Result, err error) {
+func (s Service) SubscribeTokensToTopic(batchID, topic string, tokens []string) (result Result, err error) {
 	if topic == "" || len(tokens) == 0 {
 		return
 	}
@@ -26,7 +27,7 @@ func SubscribeTokensToTopic(topic string, tokens []string) (result Result, err e
 			break
 		}
 
-		resp, err := client.SubscribeToTopic(ctx, tokens, topic)
+		resp, err := s.Client.SubscribeToTopic(ctx, tokens, topic)
 		if err != nil {
 			fmt.Printf("*** Subscribe tokens to topic %s error: %s \n", topic, err.Error())
 		}
@@ -43,6 +44,21 @@ func SubscribeTokensToTopic(topic string, tokens []string) (result Result, err e
 		// Assign token with rest tokens
 		tokens = restTokens
 	}
+
+	// Save log
+	go func() {
+		log := Log{
+			ID:           utils.GenerateUUID(),
+			Action:       LogActionSubscribeTokens,
+			BatchID:      batchID,
+			Topics:       utils.ConvertToDataTypesJSON([]string{topic}),
+			TokenCount:   len(tokens),
+			SuccessCount: result.Success,
+			FailureCount: result.Failure,
+			CreatedAt:    utils.TimeNowUTC(),
+		}
+		s.saveLog(log)
+	}()
 
 	return
 }

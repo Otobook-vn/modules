@@ -5,13 +5,14 @@ import (
 	"fmt"
 
 	"firebase.google.com/go/v4/messaging"
+	"github.com/Otobook-vn/modules/utils"
 	"github.com/thoas/go-funk"
 )
 
 const maxTokensPerSend = 1000
 
 // SendByTokens ...
-func SendByTokens(tokens []string, batchID string, payload messaging.Message) (result Result, err error) {
+func (s Service) SendByTokens(tokens []string, batchID string, payload messaging.Message) (result Result, err error) {
 	ctx := context.Background()
 	result.BatchID = batchID
 
@@ -33,7 +34,7 @@ func SendByTokens(tokens []string, batchID string, payload messaging.Message) (r
 		}
 
 		// Send
-		resp, err := client.SendMulticast(ctx, message)
+		resp, err := s.Client.SendMulticast(ctx, message)
 		if err != nil {
 			fmt.Printf("*** Error when push notification with batchID %s, error: %s \n", batchID, err.Error())
 			return
@@ -45,6 +46,21 @@ func SendByTokens(tokens []string, batchID string, payload messaging.Message) (r
 		// Assign token with rest tokens
 		tokens = restTokens
 	}
+
+	// Save log
+	go func() {
+		log := Log{
+			ID:           utils.GenerateUUID(),
+			Action:       LogActionSendByTokens,
+			BatchID:      batchID,
+			Topics:       nil,
+			TokenCount:   len(tokens),
+			SuccessCount: result.Success,
+			FailureCount: result.Failure,
+			CreatedAt:    utils.TimeNowUTC(),
+		}
+		s.saveLog(log)
+	}()
 
 	return
 }

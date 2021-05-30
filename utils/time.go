@@ -11,3 +11,8 @@ func StartOfDay(t time.Time) time.Time {
 func TimeBeforeNowInMin(min int) time.Time {
 	return time.Now().Add(time.Minute * time.Duration(min) * -1).UTC()
 }
+
+// TimeNowUTC ...
+func TimeNowUTC() time.Time {
+	return time.Now().UTC()
+}
