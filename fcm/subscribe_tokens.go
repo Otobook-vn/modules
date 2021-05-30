@@ -27,9 +27,11 @@ func (s Service) SubscribeTokensToTopic(batchID, topic string, tokens []string) 
 			break
 		}
 
-		resp, err := s.Client.SubscribeToTopic(ctx, tokens, topic)
-		if err != nil {
+		resp, e := s.Client.SubscribeToTopic(ctx, tokens, topic)
+		if e != nil {
+			err = e
 			fmt.Printf("*** Subscribe tokens to topic %s error: %s \n", topic, err.Error())
+			return
 		}
 
 		// Assign result

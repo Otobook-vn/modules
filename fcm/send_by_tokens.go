@@ -34,8 +34,9 @@ func (s Service) SendByTokens(tokens []string, batchID string, payload messaging
 		}
 
 		// Send
-		resp, err := s.Client.SendMulticast(ctx, message)
-		if err != nil {
+		resp, e := s.Client.SendMulticast(ctx, message)
+		if e != nil {
+			err = e
 			fmt.Printf("*** Error when push notification with batchID %s, error: %s \n", batchID, err.Error())
 			return
 		}
