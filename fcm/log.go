@@ -34,7 +34,7 @@ func (l Log) TableName() string {
 	if l.tableName != "" {
 		return l.tableName
 	}
-	return "logs_fcm"
+	return "log_fcm"
 }
 
 // Save log to db

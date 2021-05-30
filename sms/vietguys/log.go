@@ -33,7 +33,7 @@ func (l Log) TableName() string {
 	if l.tableName != "" {
 		return l.tableName
 	}
-	return "logs_sms_vietguys"
+	return "log_sms_vietguys"
 }
 
 // Save log to db
