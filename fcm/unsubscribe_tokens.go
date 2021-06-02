@@ -32,17 +32,19 @@ func (s Service) UnsubscribeTokensFromTopic(batchID, topic string, tokens []stri
 
 	// Save log
 	go func() {
-		log := Log{
-			ID:           utils.GenerateUUID(),
-			Action:       LogActionUnsubscribeTokens,
-			BatchID:      batchID,
-			Topics:       utils.ConvertToDataTypesJSON([]string{topic}),
-			TokenCount:   len(tokens),
-			SuccessCount: 0,
-			FailureCount: 0,
-			CreatedAt:    utils.TimeNowUTC(),
+		if batchID != "" {
+			log := Log{
+				ID:           utils.GenerateUUID(),
+				Action:       LogActionUnsubscribeTokens,
+				BatchID:      batchID,
+				Topics:       utils.ConvertToDataTypesJSON([]string{topic}),
+				TokenCount:   len(tokens),
+				SuccessCount: 0,
+				FailureCount: 0,
+				CreatedAt:    utils.TimeNowUTC(),
+			}
+			s.saveLog(log)
 		}
-		s.saveLog(log)
 	}()
 
 	return nil

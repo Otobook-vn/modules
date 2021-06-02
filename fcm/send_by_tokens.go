@@ -50,17 +50,19 @@ func (s Service) SendByTokens(tokens []string, batchID string, payload messaging
 
 	// Save log
 	go func() {
-		log := Log{
-			ID:           utils.GenerateUUID(),
-			Action:       LogActionSendByTokens,
-			BatchID:      batchID,
-			Topics:       nil,
-			TokenCount:   len(tokens),
-			SuccessCount: result.Success,
-			FailureCount: result.Failure,
-			CreatedAt:    utils.TimeNowUTC(),
+		if batchID != "" {
+			log := Log{
+				ID:           utils.GenerateUUID(),
+				Action:       LogActionSendByTokens,
+				BatchID:      batchID,
+				Topics:       nil,
+				TokenCount:   len(tokens),
+				SuccessCount: result.Success,
+				FailureCount: result.Failure,
+				CreatedAt:    utils.TimeNowUTC(),
+			}
+			s.saveLog(log)
 		}
-		s.saveLog(log)
 	}()
 
 	return

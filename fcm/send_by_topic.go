@@ -38,17 +38,19 @@ func (s Service) SendByTopics(topics []string, batchID string, payload messaging
 
 	// Save log
 	go func() {
-		log := Log{
-			ID:           utils.GenerateUUID(),
-			Action:       LogActionSendByTopic,
-			BatchID:      batchID,
-			Topics:       utils.ConvertToDataTypesJSON(topics),
-			TokenCount:   0,
-			SuccessCount: 0,
-			FailureCount: 0,
-			CreatedAt:    utils.TimeNowUTC(),
+		if batchID != "" {
+			log := Log{
+				ID:           utils.GenerateUUID(),
+				Action:       LogActionSendByTopic,
+				BatchID:      batchID,
+				Topics:       utils.ConvertToDataTypesJSON(topics),
+				TokenCount:   0,
+				SuccessCount: 0,
+				FailureCount: 0,
+				CreatedAt:    utils.TimeNowUTC(),
+			}
+			s.saveLog(log)
 		}
-		s.saveLog(log)
 	}()
 }
 

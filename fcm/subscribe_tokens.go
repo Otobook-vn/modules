@@ -49,17 +49,19 @@ func (s Service) SubscribeTokensToTopic(batchID, topic string, tokens []string) 
 
 	// Save log
 	go func() {
-		log := Log{
-			ID:           utils.GenerateUUID(),
-			Action:       LogActionSubscribeTokens,
-			BatchID:      batchID,
-			Topics:       utils.ConvertToDataTypesJSON([]string{topic}),
-			TokenCount:   len(tokens),
-			SuccessCount: result.Success,
-			FailureCount: result.Failure,
-			CreatedAt:    utils.TimeNowUTC(),
+		if batchID != "" {
+			log := Log{
+				ID:           utils.GenerateUUID(),
+				Action:       LogActionSubscribeTokens,
+				BatchID:      batchID,
+				Topics:       utils.ConvertToDataTypesJSON([]string{topic}),
+				TokenCount:   len(tokens),
+				SuccessCount: result.Success,
+				FailureCount: result.Failure,
+				CreatedAt:    utils.TimeNowUTC(),
+			}
+			s.saveLog(log)
 		}
-		s.saveLog(log)
 	}()
 
 	return
