@@ -58,7 +58,7 @@ func (s Service) SubscribeTokensToTopic(batchID, topic string, tokens []string) 
 				TokenCount:   len(tokens),
 				SuccessCount: result.Success,
 				FailureCount: result.Failure,
-				CreatedAt:    utils.TimeNowUTC(),
+				CreatedAt:    utils.TimeNow(),
 			}
 			s.saveLog(log)
 		}

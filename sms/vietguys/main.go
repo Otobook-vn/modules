@@ -139,7 +139,7 @@ func (s Service) SendOTP(phone, ip, content, otpCode string) error {
 			PhoneNumber: phone,
 			IP:          ip,
 			Content:     content,
-			CreatedAt:   utils.TimeNowUTC(),
+			CreatedAt:   utils.TimeNow(),
 			Success:     result.Error == 0,
 			Result:      rawResult,
 		}

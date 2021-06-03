@@ -41,7 +41,7 @@ func (s Service) UnsubscribeTokensFromTopic(batchID, topic string, tokens []stri
 				TokenCount:   len(tokens),
 				SuccessCount: 0,
 				FailureCount: 0,
-				CreatedAt:    utils.TimeNowUTC(),
+				CreatedAt:    utils.TimeNow(),
 			}
 			s.saveLog(log)
 		}

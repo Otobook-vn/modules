@@ -6,7 +6,6 @@ import (
 
 	"firebase.google.com/go/v4/messaging"
 	"github.com/Otobook-vn/modules/utils"
-	"github.com/kr/pretty"
 	"github.com/thoas/go-funk"
 )
 
@@ -36,8 +35,6 @@ func (s Service) SendByTokens(tokens []string, batchID string, payload messaging
 
 		// Send
 		resp, e := s.Client.SendMulticast(ctx, message)
-		pretty.Println("e", e)
-		pretty.Println("resp", resp)
 		if e != nil {
 			err = e
 			fmt.Printf("*** Error when push notification with batchID %s, error: %s \n", batchID, err.Error())
@@ -62,7 +59,7 @@ func (s Service) SendByTokens(tokens []string, batchID string, payload messaging
 				TokenCount:   len(tokens),
 				SuccessCount: result.Success,
 				FailureCount: result.Failure,
-				CreatedAt:    utils.TimeNowUTC(),
+				CreatedAt:    utils.TimeNow(),
 			}
 			s.saveLog(log)
 		}

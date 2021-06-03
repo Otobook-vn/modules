@@ -47,7 +47,7 @@ func (s Service) SendByTopics(topics []string, batchID string, payload messaging
 				TokenCount:   0,
 				SuccessCount: 0,
 				FailureCount: 0,
-				CreatedAt:    utils.TimeNowUTC(),
+				CreatedAt:    utils.TimeNow(),
 			}
 			s.saveLog(log)
 		}
