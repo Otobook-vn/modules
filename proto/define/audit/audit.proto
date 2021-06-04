@@ -1,0 +1,33 @@
+syntax = "proto3";
+package proto;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "./;pb";
+
+service Audit {
+  rpc GetByTarget(GetByTargetRequest) returns (GetByTargetResponse);
+}
+
+message GetByTargetRequest {
+  string targetId = 1;
+  string type = 2;
+}
+
+message GetByTargetResponse {
+  repeated AuditDetail list = 1;
+}
+
+message AuditDetail {
+  string id = 1;
+  AuditAuthor author = 2;
+  string type = 3;
+  string action = 4;
+  google.protobuf.Timestamp createdAt = 5;
+  string data = 6;
+}
+
+message AuditAuthor {
+  string id = 1;
+  string name = 2;
+}
