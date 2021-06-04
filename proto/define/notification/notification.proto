@@ -14,7 +14,7 @@ message AllByUserIDRequest {
   string lang = 2;
   google.protobuf.Timestamp timestamp = 3;
   int32 limit = 4;
-  int32 category = 5;
+  string category = 5;
 }
 
 message AllByUserIDResponse {
