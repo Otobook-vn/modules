@@ -46,6 +46,7 @@ type Result struct {
 // Service ...
 type Service struct {
 	Config
+
 	Client *http.Client
 }
 
