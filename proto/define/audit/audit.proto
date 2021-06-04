@@ -10,8 +10,10 @@ service Audit {
 }
 
 message GetByTargetRequest {
-  string targetId = 1;
+  string source = 1;
   string type = 2;
+  string id = 3;
+  google.protobuf.Timestamp timestamp = 4;
 }
 
 message GetByTargetResponse {
