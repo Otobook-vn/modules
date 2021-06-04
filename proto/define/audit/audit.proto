@@ -6,8 +6,20 @@ import "google/protobuf/timestamp.proto";
 option go_package = "./;pb";
 
 service Audit {
+  rpc Create(CreateRequest) returns (CreateResponse);
   rpc GetByTarget(GetByTargetRequest) returns (GetByTargetResponse);
 }
+
+message CreateRequest {
+  string source = 1;
+  string target = 2;
+  string id = 3;
+  AuditAuthor author = 4;
+  string action = 5;
+  string data = 6;
+}
+
+message CreateResponse {}
 
 message GetByTargetRequest {
   string source = 1;
