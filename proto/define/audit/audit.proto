@@ -11,7 +11,7 @@ service Audit {
 
 message GetByTargetRequest {
   string source = 1;
-  string type = 2;
+  string target = 2;
   string id = 3;
   google.protobuf.Timestamp timestamp = 4;
 }
@@ -23,7 +23,7 @@ message GetByTargetResponse {
 message AuditDetail {
   string id = 1;
   AuditAuthor author = 2;
-  string type = 3;
+  string target = 3;
   string action = 4;
   google.protobuf.Timestamp createdAt = 5;
   string data = 6;
