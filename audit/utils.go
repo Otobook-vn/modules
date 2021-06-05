@@ -24,3 +24,8 @@ func timeNow() time.Time {
 	loc := getHCMLocation()
 	return time.Now().In(loc)
 }
+
+// getColName ...
+func getColName(source, target string) string {
+	return source + "-" + target
+}

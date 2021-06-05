@@ -19,7 +19,7 @@ type AllQuery struct {
 func (s Service) All(query AllQuery) []Audit {
 	var (
 		ctx     = context.Background()
-		colName = s.Source + "_" + query.Target
+		colName = getColName(s.Source, query.Target)
 		skip    = query.Page * query.Limit
 		result  = make([]Audit, 0)
 	)

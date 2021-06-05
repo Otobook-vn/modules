@@ -41,7 +41,7 @@ func (s Service) Create(payload CreatePayload) {
 	}
 
 	// Insert to db
-	colName := s.Source + "_" + payload.Target
+	colName := getColName(s.Source, payload.Target)
 	if _, err := s.MongoDB.Collection(colName).InsertOne(ctx, doc); err != nil {
 		pretty.Println("*** Audit create log error", err.Error())
 		pretty.Println("*** Payload", payload)
