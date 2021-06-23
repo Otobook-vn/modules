@@ -14,6 +14,15 @@ const (
 
 // List targets
 const (
-	TargetStaff     = "staffs"
-	TargetStaffRole = "staff-roles"
+	TargetArticleTopic       = "article-topics"
+	TargetArticle            = "articles"
+	TargetCarServiceCategory = "car-service-categories"
+	TargetCarService         = "car-services"
+	TargetCarBrand           = "car-brands"
+	TargetCarModel           = "car-models"
+	TargetCarModelVersion    = "car-model-versions"
+	TargetCarPart            = "car-parts"
+	TargetCarErrorCode       = "car-error-codes"
+	TargetStaff              = "staffs"
+	TargetStaffRole          = "staff-roles"
 )
