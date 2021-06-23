@@ -39,12 +39,7 @@ func (l Log) TableName() string {
 
 // Save log to db
 func (s Service) saveLog(doc Log) {
-	// Return if no postgresql instance
-	if s.PostgreSQL == nil {
-		return
-	}
-
-	if err := s.PostgreSQL.Model(Log{}).Create(doc).Error; err != nil {
+	if err := s.DB.Model(Log{}).Create(doc).Error; err != nil {
 		fmt.Println("*** Error when create log", err)
 		fmt.Println("*** Log", doc)
 	}

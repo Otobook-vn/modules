@@ -1,0 +1,19 @@
+[consult_question_admin_change_status]
+description = "Admin change status of consult question"
+other = "Your question status has been changed to {{.Status}}"
+
+[consult_question_specialist_mark_completed]
+description = "Specialist mark consult question completed"
+other = "{{.UserName}} has marked your question status to Completed"
+
+[consult_question_has_new_comment]
+description = "Someone just commented on consult question"
+other = "{{.UserName}} commented on your consult question"
+
+[consult_question_user_rating]
+description = "User rated a consult question"
+other = "User {{.UserName}} has rated your consultation"
+
+[consult_question_resolved]
+description = "Consult question resolved"
+other = "Your question has been resolved"

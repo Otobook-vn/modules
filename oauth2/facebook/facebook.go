@@ -48,7 +48,6 @@ var endpointMe = "https://graph.facebook.com/me?fields=name,picture,email&access
 var client http.Client
 
 // GetUserInfo return user data from token
-// if error
 func GetUserInfo(token string) (result UserInfo, err error) {
 	// Call api for user info
 	meURL := fmt.Sprintf(endpointMe, token)

@@ -1,0 +1,19 @@
+[consult_question_admin_change_status]
+description = "Admin chuyển trạng thái câu hỏi tư vấn"
+other = "Câu hỏi tư vấn của bạn đã được chuyển thành trạng thái {{.Status}}"
+
+[consult_question_specialist_mark_completed]
+description = "Chuyên gia đánh dấu đã hoàn thành câu hỏi tư vẫn"
+other = "Chuyên gia {{.UserName}} đã chuyển câu hỏi tư vấn của bạn sang trạng thái Hoàn thành"
+
+[consult_question_has_new_comment]
+description = "Có người vừa bình luận vào câu hỏi từ vấn"
+other = "{{.UserName}} vừa thêm bình luận vào câu hỏi tư vấn của bạn"
+
+[consult_question_user_rating]
+description = "Người dùng đánh giá câu hỏi tư vấn"
+other = "Người dùng {{.UserName}} vừa đánh gia phần tư vấn của bạn"
+
+[consult_question_resolved]
+description = "Câu hỏi tư vấn đã được xử lý thành công"
+other = "Câu hỏi của bạn đã được xử lý thành công. Bạn có thể tiếp tục bình luận vào câu hỏi nếu có thêm thắc mắc"

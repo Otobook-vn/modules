@@ -5,8 +5,9 @@ import (
 	"fmt"
 
 	"firebase.google.com/go/v4/messaging"
-	"github.com/Otobook-vn/modules/utils"
 	"github.com/thoas/go-funk"
+
+	"github.com/Otobook-vn/modules/utils"
 )
 
 const maxTokensPerSend = 1000
