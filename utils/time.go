@@ -2,6 +2,8 @@ package utils
 
 import (
 	"time"
+
+	"github.com/Otobook-vn/modules/constant"
 )
 
 //
@@ -41,4 +43,31 @@ func StartOfDay(t time.Time) time.Time {
 func TimeBeforeNowInMin(min int) time.Time {
 	loc := GetHCMLocation()
 	return time.Now().Add(time.Minute * time.Duration(min) * -1).In(loc)
+}
+
+// AppTime ...
+type AppTime struct {
+	StringValue string
+	DateValue   time.Time
+}
+
+// ConvertToDateFull ...
+func (a AppTime) ConvertToDateFull() time.Time {
+	loc := GetHCMLocation()
+	t, _ := time.Parse(constant.DateLayoutFull, a.StringValue)
+	return t.In(loc)
+}
+
+// ConvertToQueryDateFrom ...
+func (a AppTime) ConvertToQueryDateFrom() time.Time {
+	loc := GetHCMLocation()
+	t, _ := time.Parse(constant.DateLayoutYYYYMMDD, a.StringValue)
+	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, loc)
+}
+
+// ConvertToQueryDateTo ...
+func (a AppTime) ConvertToQueryDateTo() time.Time {
+	loc := GetHCMLocation()
+	t, _ := time.Parse(constant.DateLayoutYYYYMMDD, a.StringValue)
+	return time.Date(t.Year(), t.Month(), t.Day(), 23, 59, 59, 999, loc)
 }
