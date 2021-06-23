@@ -12,6 +12,7 @@ type CarPart struct {
 	Name         datatypes.JSON
 	SearchTokens TsVector
 	Status       string
+	IsOther      bool
 	CreatedAt    time.Time
 }
 
