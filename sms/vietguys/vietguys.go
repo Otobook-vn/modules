@@ -33,8 +33,6 @@ type Config struct {
 	From string
 	// MongoDB config, for save documents
 	MongoDB MongoDBConfig
-	// Log table name
-	LogTableName string
 	// Limit send time per ip
 	IPMaxSendPerDay int
 	// Limit send time per phone number
@@ -90,9 +88,21 @@ func NewInstance(config Config) error {
 	return nil
 }
 
+// GetInstance ...
+func GetInstance() *Service {
+	return s
+}
+
 // SendOTP to phone number
 // Phone format: 84935123456
-func (s Service) SendOTP(phone, ip, content, otpCode string) error {
+// Content must has "%s", for otp code substitution
+func (s Service) SendOTP(phone, ip, contentFormat string) error {
+	// Generate otp code
+	otpCode := utils.RandomOTPCode()
+
+	// Format content
+	content := fmt.Sprintf(contentFormat, otpCode)
+
 	// Just remove char "+" if existed
 	strings.Replace(phone, "+", "", 1)
 
