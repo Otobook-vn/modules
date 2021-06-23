@@ -25,4 +25,6 @@ const (
 	TargetCarErrorCode       = "car-error-codes"
 	TargetStaff              = "staffs"
 	TargetStaffRole          = "staff-roles"
+	TargetConsultCategory    = "consult-categories"
+	TargetConsultComment     = "consult-comments"
 )
