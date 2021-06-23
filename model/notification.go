@@ -1,14 +1,9 @@
 package model
 
 import (
-	"encoding/json"
-	"strings"
 	"time"
 
 	"gorm.io/datatypes"
-
-	"github.com/Otobook-vn/modules/constant"
-	"github.com/Otobook-vn/modules/translation"
 )
 
 // Notification ...
@@ -62,55 +57,4 @@ type NotificationResponse struct {
 	Action  *NotificationAction `json:"action"`
 	Photo   string              `json:"photo"`
 	Data    *NotificationData   `json:"-"`
-}
-
-// ParseNotificationDataFromJSON ...
-func ParseNotificationDataFromJSON(jsonData datatypes.JSON) (result *NotificationData) {
-	if jsonData == nil {
-		return
-	}
-	bytes, _ := json.Marshal(jsonData)
-	if err := json.Unmarshal(bytes, &result); err != nil {
-		return
-	}
-	return
-}
-
-// GetNotificationAction based on type
-func GetNotificationAction(notificationType string, targetID string) (result NotificationAction) {
-	switch notificationType {
-	case constant.NotificationTypeConsultQuestionAdminChangeStatus,
-		constant.NotificationTypeConsultQuestionSpecialistMarkCompleted,
-		constant.NotificationTypeConsultQuestionHasNewComment,
-		constant.NotificationTypeConsultQuestionUserRating:
-		result.Type = constant.NotificationActionOpenConsultQuestionDetail
-		result.Value = targetID
-	}
-
-	// Uppercase type
-	result.Type = strings.ToUpper(result.Type)
-
-	return
-}
-
-// GetNotificationTitle based on category and data
-func GetNotificationTitle(lang string, notificationCategory string, data *NotificationData) string {
-	return translation.GetNotificationTitle(lang, notificationCategory, data)
-}
-
-// GetNotificationContent based on type and data
-func GetNotificationContent(lang string, notificationType string, data *NotificationData) string {
-	// Get translated data first
-	var translatedData = *data
-	if data != nil {
-		// NOTE: messageID must match with key declared in toml files /translation
-
-		// Get by type
-		switch notificationType {
-		case constant.NotificationTypeConsultQuestionAdminChangeStatus:
-			translatedData.Status = translation.GetOtherText(lang, "consult_question_status_"+data.Status)
-		}
-	}
-
-	return translation.GetNotificationContent(lang, notificationType, translatedData)
 }
