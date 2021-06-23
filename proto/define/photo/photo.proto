@@ -1,0 +1,28 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "./;pb";
+
+service Photo {
+  rpc GetPhotoByIDs(GetPhotoByIDsRequest) returns (GetPhotoByIDsResponse);
+}
+
+message GetPhotoByIDsRequest {
+  repeated string ids = 1;
+}
+
+message GetPhotoByIDsResponse {
+  repeated PhotoDetail photos = 1;
+}
+
+message PhotoDetail{
+  string id = 1;
+  string name = 2;
+  PhotoSize small = 3;
+  PhotoSize medium = 4;
+}
+
+message PhotoSize {
+  int32 width = 1;
+  int32 height = 2;
+}
