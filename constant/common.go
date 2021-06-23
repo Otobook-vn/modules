@@ -41,4 +41,7 @@ var (
 	}
 
 	SMSTypeOTP = "otp"
+
+	SortNearby          = "nearby"
+	NearbyRadiusInMeter = 50000 // 50km
 )
