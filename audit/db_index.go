@@ -16,8 +16,14 @@ func (s Service) indexDB() {
 		newIndex("source", "target", "targetId"),
 	}
 
+	// Get list targets
+	var targets = make([]string, 0)
+	if s.Source == SourceOtobook {
+		targets = OtobookTargets
+	}
+
 	// Index all allowed sources
-	for _, target := range OtobookTargets {
+	for _, target := range targets {
 		// Index
 		indexCol(s.DB.Collection(getColName(s.Source, target)), commonIndex)
 	}

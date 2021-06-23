@@ -18,8 +18,6 @@ type MongoDBConfig struct {
 type Config struct {
 	// Source of server, e.g: otobook
 	Source string
-	// Target of log
-	Targets []string
 	// MongoDB config, for save documents
 	MongoDB MongoDBConfig
 }
