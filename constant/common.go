@@ -34,5 +34,11 @@ var (
 	DateLayoutFull     = "2006-01-02T15:04:05.000Z"
 	DateLayoutYYYYMMDD = "2006-01-02"
 
+	StatusActive   = "active"
+	StatusInactive = "inactive"
+	StatusList     = []interface{}{
+		StatusActive, StatusInactive,
+	}
+
 	SMSTypeOTP = "otp"
 )
