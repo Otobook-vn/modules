@@ -5,6 +5,7 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/gosimple/slug"
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
@@ -60,4 +61,9 @@ func TransformKeywordToSearchString(keyword string) string {
 	s = RemoveDiacritics(s)
 	s = strings.ReplaceAll(s, " ", "&")
 	return s + ":*" // For prefix search
+}
+
+// ToSlug ...
+func ToSlug(s string) string {
+	return slug.Make(s)
 }

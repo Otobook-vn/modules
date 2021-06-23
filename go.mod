@@ -7,6 +7,7 @@ require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/go-redis/redis/v8 v8.10.0
 	github.com/google/uuid v1.2.0
+	github.com/gosimple/slug v1.9.0
 	github.com/hibiken/asynq v0.17.2
 	github.com/kr/pretty v0.2.1
 	github.com/labstack/echo/v4 v4.3.0
@@ -23,6 +24,8 @@ require (
 	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
 	golang.org/x/text v0.3.6
 	google.golang.org/api v0.48.0
+	google.golang.org/grpc v1.38.0
+	google.golang.org/protobuf v1.26.0
 	gorm.io/datatypes v1.0.1
 	gorm.io/driver/postgres v1.1.0
 	gorm.io/gorm v1.21.11
