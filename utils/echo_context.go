@@ -29,3 +29,8 @@ func GetLanguageFromEchoContext(c echo.Context) string {
 	lang := c.Get("lang")
 	return lang.(string)
 }
+
+// GetIPFromEchoContext ...
+func GetIPFromEchoContext(c echo.Context) string {
+	return c.RealIP()
+}
