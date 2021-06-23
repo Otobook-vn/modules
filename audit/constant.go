@@ -14,17 +14,34 @@ const (
 
 // List targets
 const (
-	TargetArticleTopic       = "article-topics"
-	TargetArticle            = "articles"
-	TargetCarServiceCategory = "car-service-categories"
-	TargetCarService         = "car-services"
-	TargetCarBrand           = "car-brands"
-	TargetCarModel           = "car-models"
-	TargetCarModelVersion    = "car-model-versions"
-	TargetCarPart            = "car-parts"
-	TargetCarErrorCode       = "car-error-codes"
-	TargetStaff              = "staffs"
-	TargetStaffRole          = "staff-roles"
-	TargetConsultCategory    = "consult-categories"
-	TargetConsultComment     = "consult-comments"
+	TargetOtobookArticleTopic       = "article-topics"
+	TargetOtobookArticle            = "articles"
+	TargetOtobookCarServiceCategory = "car-service-categories"
+	TargetOtobookCarService         = "car-services"
+	TargetOtobookCarBrand           = "car-brands"
+	TargetOtobookCarModel           = "car-models"
+	TargetOtobookCarModelVersion    = "car-model-versions"
+	TargetOtobookCarPart            = "car-parts"
+	TargetOtobookCarErrorCode       = "car-error-codes"
+	TargetOtobookStaff              = "staffs"
+	TargetOtobookStaffRole          = "staff-roles"
+	TargetOtobookConsultCategory    = "consult-categories"
+	TargetOtobookConsultComment     = "consult-comments"
 )
+
+// OtobookTargets ...
+var OtobookTargets = []string{
+	TargetOtobookArticleTopic,
+	TargetOtobookArticle,
+	TargetOtobookCarServiceCategory,
+	TargetOtobookCarService,
+	TargetOtobookCarBrand,
+	TargetOtobookCarModel,
+	TargetOtobookCarModelVersion,
+	TargetOtobookCarPart,
+	TargetOtobookCarErrorCode,
+	TargetOtobookStaff,
+	TargetOtobookStaffRole,
+	TargetOtobookConsultCategory,
+	TargetOtobookConsultComment,
+}
