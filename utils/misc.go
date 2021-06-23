@@ -3,6 +3,8 @@ package utils
 import (
 	"encoding/json"
 
+	"github.com/Otobook-vn/modules/constant"
+	"github.com/thoas/go-funk"
 	"gorm.io/datatypes"
 )
 
@@ -39,4 +41,13 @@ func GetValueOfLangFromJSON(data datatypes.JSON, lang string) string {
 		return ""
 	}
 	return mapData[lang]
+}
+
+var osNameList = []string{
+	constant.OSNameIOS, constant.OSNameAndroid,
+}
+
+// IsMobilePlatform ...
+func IsMobilePlatform(os string) bool {
+	return funk.ContainsString(osNameList, os)
 }
