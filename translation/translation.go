@@ -9,7 +9,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-// Hold data for each language
+// Hold data for each language: vi, en, ...
 type languageData struct {
 	Lang      string
 	Localizer *i18n.Localizer
