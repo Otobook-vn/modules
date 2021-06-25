@@ -45,7 +45,11 @@ func SetKeyValue(ctx context.Context, key string, value interface{}) {
 
 // GetValueByKey ...
 func GetValueByKey(ctx context.Context, key string) string {
-	value, _ := rdb.Get(ctx, key).Result()
+	cmd := rdb.Get(ctx, key)
+	if cmd == nil {
+		return ""
+	}
+	value, _ := cmd.Result()
 	return value
 }
 
