@@ -17,6 +17,12 @@ var (
 		NotificationSendOptionAllUser, NotificationSendOptionByList,
 	}
 
+	NotificationSendStatusPending = "pending"
+	NotificationSendStatusSent    = "send"
+	NotificationSendStatusList    = []interface{}{
+		NotificationSendStatusPending, NotificationSendStatusSent,
+	}
+
 	NotificationTypeConsultQuestionAdminChangeStatus       = "consult_question_admin_change_status"
 	NotificationTypeConsultQuestionSpecialistMarkCompleted = "consult_question_specialist_mark_completed"
 	NotificationTypeConsultQuestionHasNewComment           = "consult_question_has_new_comment"

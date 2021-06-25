@@ -22,6 +22,8 @@ type NotificationManagement struct {
 	// Ref
 	Creator   Staff `gorm:"foreignKey:CreatorID"`
 	CreatorID string
+	Sender    Staff `gorm:"foreignKey:SenderID"`
+	SenderID  *string
 }
 
 // TableName overrides the table name

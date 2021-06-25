@@ -10,6 +10,7 @@ const (
 	NotificationManagementKeyInvalidSendOption  = "notification_management_invalid_send_option"
 	NotificationManagementKeyListUserEmpty      = "notification_management_list_user_empty"
 	NotificationManagementKeyCannotSend         = "notification_management_cannot_send"
+	NotificationManagementKeyInvalidSender      = "notification_management_invalid_sender"
 )
 
 // 500-549
@@ -53,5 +54,10 @@ var notificationManagement = []Locale{
 		Key:     NotificationManagementKeyCannotSend,
 		Message: "tin nhắn hiện không thể gửi",
 		Code:    507,
+	},
+	{
+		Key:     NotificationManagementKeyInvalidSender,
+		Message: "người gửi không hợp lệ",
+		Code:    508,
 	},
 }
