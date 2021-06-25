@@ -7,6 +7,7 @@ const (
 	NotificationManagementKeyInvalidUserGroup   = "notification_management_invalid_user_group"
 	NotificationManagementKeyInvalidExternalURL = "notification_management_invalid_external_url"
 	NotificationManagementKeyInvalidContent     = "notification_management_invalid_content"
+	NotificationManagementKeyInvalidSendOption  = "notification_management_invalid_send_option"
 	NotificationManagementKeyListUserEmpty      = "notification_management_list_user_empty"
 	NotificationManagementKeyCannotSend         = "notification_management_cannot_send"
 )
@@ -39,13 +40,18 @@ var notificationManagement = []Locale{
 		Code:    504,
 	},
 	{
+		Key:     NotificationManagementKeyInvalidSendOption,
+		Message: "loại người nhận không hợp lệ",
+		Code:    505,
+	},
+	{
 		Key:     NotificationManagementKeyListUserEmpty,
 		Message: "danh sách khách hàng không được trống",
-		Code:    505,
+		Code:    506,
 	},
 	{
 		Key:     NotificationManagementKeyCannotSend,
 		Message: "tin nhắn hiện không thể gửi",
-		Code:    506,
+		Code:    507,
 	},
 }

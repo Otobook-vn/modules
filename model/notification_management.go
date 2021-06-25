@@ -5,6 +5,7 @@ import "time"
 // NotificationManagement ...
 type NotificationManagement struct {
 	ID             string `gorm:"primaryKey"`
+	Language       string // vi, en
 	Category       string // common, consult
 	UserGroup      string // all, normal, specialist
 	Title          string
@@ -12,7 +13,7 @@ type NotificationManagement struct {
 	DisplayContent string // for display in-app
 	ExternalURL    string // open external url
 	Avatar         string
-	SendOption     string // all_users, by_listing
+	SendOption     string // all_users, by_list
 	Status         string // pending, sent
 	StatsSent      int64  // total sent
 	CreatedAt      time.Time

@@ -1,5 +1,6 @@
 package constant
 
+// Constant
 var (
 	ArticleCategoryCodeInformation = "information"
 	ArticleCategoryCodePromotion   = "promotion"

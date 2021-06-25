@@ -1,5 +1,6 @@
 package constant
 
+// Constant
 var (
 	ConsultQuestionStatusReview    = "review"
 	ConsultQuestionStatusOpen      = "open"

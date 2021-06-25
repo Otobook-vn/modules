@@ -1,6 +1,6 @@
 package constant
 
-// Constant ...
+// Constant
 const (
 	SizeSmallPrefix  = "sm_"
 	SizeMediumPrefix = "md_"
