@@ -27,6 +27,10 @@ const (
 	CarView  = "car_view"
 	CarEdit  = "car_edit"
 	CarOther = "car_other"
+
+	NotificationManagementView  = "notification_management_view"
+	NotificationManagementEdit  = "notification_management_edit"
+	NotificationManagementOther = "notification_management_other"
 )
 
 type list struct {
@@ -94,6 +98,14 @@ var ListStaffRoles = []list{
 			generatePermission("Xem thông tin", CarView),
 			generatePermission("Thêm/Chỉnh sửa", CarEdit),
 			generatePermission("Chức năng khác", CarOther),
+		},
+	},
+	{
+		Group: "Quản lý tin nhắn",
+		Permissions: []permission{
+			generatePermission("Xem thông tin", NotificationManagementView),
+			generatePermission("Thêm/Chỉnh sửa", NotificationManagementEdit),
+			generatePermission("Chức năng khác", NotificationManagementOther),
 		},
 	},
 }
