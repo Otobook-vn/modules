@@ -6,8 +6,8 @@ import (
 	"gorm.io/datatypes"
 )
 
-// UserNotification ...
-type UserNotification struct {
+// Notification ...
+type Notification struct {
 	ID        string
 	Category  string
 	Type      string
@@ -22,39 +22,39 @@ type UserNotification struct {
 }
 
 // TableName overrides the table name
-func (UserNotification) TableName() string {
-	return "user_notifications"
+func (Notification) TableName() string {
+	return "notifications"
 }
 
-// UserNotificationData ...
-type UserNotificationData struct {
+// NotificationData ...
+type NotificationData struct {
 	Status   string `json:"status,omitempty"`
 	UserID   string `json:"userId,omitempty"`
 	UserName string `json:"userName,omitempty"`
 	Photo    string `json:"photo,omitempty"`
 }
 
-// UserNotificationAction ...
-type UserNotificationAction struct {
+// NotificationAction ...
+type NotificationAction struct {
 	Type  string `json:"type"`
 	Value string `json:"value"`
 }
 
-// UserNotificationPushData ...
-type UserNotificationPushData struct {
-	ID      string                  `json:"id"`
-	Title   string                  `json:"title"`
-	Content string                  `json:"content"`
-	Action  *UserNotificationAction `json:"action"`
-	Photo   string                  `json:"photo"`
+// NotificationPushData ...
+type NotificationPushData struct {
+	ID      string              `json:"id"`
+	Title   string              `json:"title"`
+	Content string              `json:"content"`
+	Action  *NotificationAction `json:"action"`
+	Photo   string              `json:"photo"`
 }
 
-// UserNotificationResponse ...
-type UserNotificationResponse struct {
-	ID      string                  `json:"id"`
-	Title   string                  `json:"title"`
-	Content string                  `json:"content"`
-	Action  *UserNotificationAction `json:"action"`
-	Photo   string                  `json:"photo"`
-	Data    *UserNotificationData   `json:"-"`
+// NotificationResponse ...
+type NotificationResponse struct {
+	ID      string              `json:"id"`
+	Title   string              `json:"title"`
+	Content string              `json:"content"`
+	Action  *NotificationAction `json:"action"`
+	Photo   string              `json:"photo"`
+	Data    *NotificationData   `json:"-"`
 }
