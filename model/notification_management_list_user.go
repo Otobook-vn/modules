@@ -10,3 +10,8 @@ type NotificationManagementListUser struct {
 	User                     User `gorm:"foreignKey:UserID"`
 	UserID                   string
 }
+
+// TableName overrides the table name
+func (NotificationManagementListUser) TableName() string {
+	return "notification_managements_list_users"
+}

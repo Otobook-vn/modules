@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/datatypes"
+)
 
 // NotificationManagement ...
 type NotificationManagement struct {
@@ -12,7 +16,7 @@ type NotificationManagement struct {
 	PushContent    string // for display on notification system
 	DisplayContent string // for display in-app
 	ExternalURL    string // open external url
-	Avatar         string
+	Avatar         datatypes.JSON
 	SendOption     string // all_users, by_list
 	Status         string // pending, sent
 	StatsSent      int64  // total sent
