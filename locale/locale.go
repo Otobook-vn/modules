@@ -47,4 +47,6 @@ func Init() {
 	list = append(list, article...)
 	// 450-499
 	list = append(list, consult...)
+	// 500-549
+	list = append(list, notificationManagement...)
 }

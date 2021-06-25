@@ -8,7 +8,7 @@ import (
 
 // Notification ...
 type Notification struct {
-	ID        string
+	ID        string `gorm:"primaryKey"`
 	Category  string
 	Type      string
 	TargetID  string
