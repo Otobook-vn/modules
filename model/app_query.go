@@ -33,6 +33,8 @@ type AppQuery struct {
 	DateTo          time.Time
 	User            string
 	Code            string
+	Target          string
+	Sender          string
 }
 
 // SetLimitMaxValue ...

@@ -11,10 +11,10 @@ var (
 		NotificationCategoryCommon, NotificationCategoryConsult,
 	}
 
-	NotificationSendOptionAllUser = "all_users"
-	NotificationSendOptionByList  = "by_list"
-	NotificationSendOptionList    = []interface{}{
-		NotificationSendOptionAllUser, NotificationSendOptionByList,
+	NotificationTargetAllUsers = "all_users"
+	NotificationTargetByList   = "by_list"
+	NotificationTargetList     = []interface{}{
+		NotificationTargetAllUsers, NotificationTargetByList,
 	}
 
 	NotificationSendStatusPending = "pending"
