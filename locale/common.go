@@ -29,6 +29,7 @@ const (
 	CommonKeyInvalidPhoto                          = "common_invalid_photo"
 	CommonKeyUserOtobookNotFound                   = "common_user_otobook_not_found"
 	CommonKeyInvalidCarPartID                      = "common_invalid_car_part_id"
+	CommonKeyInvalidUserID                         = "common_invalid_user_id"
 )
 
 // 1-99
@@ -162,5 +163,10 @@ var common = []Locale{
 		Key:     CommonKeyInvalidCarPartID,
 		Message: "bộ phận xe không hợp lệ",
 		Code:    26,
+	},
+	{
+		Key:     CommonKeyInvalidUserID,
+		Message: "người dùng không hợp lệ",
+		Code:    27,
 	},
 }

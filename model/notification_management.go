@@ -18,6 +18,10 @@ type NotificationManagement struct {
 	StatsSent      int64  // total sent
 	CreatedAt      time.Time
 	SentAt         time.Time
+
+	// Ref
+	Creator   Staff `gorm:"foreignKey:CreatorID"`
+	CreatorID string
 }
 
 // TableName overrides the table name
