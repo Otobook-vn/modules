@@ -77,3 +77,16 @@ func (l MultiLang) GetArrayValues() []string {
 	}
 	return values
 }
+
+// GetValueByLang ...
+func (l MultiLang) GetValueByLang(lang string) string {
+	byteData, err := json.Marshal(l)
+	if err != nil {
+		return ""
+	}
+	var mapData map[string]string
+	if err = json.Unmarshal(byteData, &mapData); err != nil {
+		return ""
+	}
+	return mapData[lang]
+}
