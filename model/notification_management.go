@@ -8,20 +8,20 @@ import (
 
 // NotificationManagement ...
 type NotificationManagement struct {
-	ID             string `gorm:"primaryKey"`
-	Language       string // vi, en
-	Category       string // common, consult
-	UserGroup      string // all, normal, specialist
-	Title          string
-	PushContent    string // for display on notification system
-	DisplayContent string // for display in-app
-	ExternalURL    string // open external url
-	Avatar         datatypes.JSON
-	Target         string // all_users, by_list
-	Status         string // pending, sent
-	StatsSent      int64  // total sent
-	CreatedAt      time.Time
-	SentAt         time.Time
+	ID          string `gorm:"primaryKey"`
+	Language    string // vi, en
+	Category    string // common, consult
+	UserGroup   string // all, normal, specialist
+	Title       string
+	Content     string
+	ActionType  string
+	ActionValue string
+	ActionData  datatypes.JSON
+	Target      string // all_users, by_list
+	Status      string // pending, sent
+	StatsSent   int64  // total sent
+	CreatedAt   time.Time
+	SentAt      time.Time
 
 	// Ref
 	Creator   Staff `gorm:"foreignKey:CreatorID"`
