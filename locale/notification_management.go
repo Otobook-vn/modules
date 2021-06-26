@@ -8,7 +8,7 @@ const (
 	NotificationManagementKeyInvalidAction     = "notification_management_invalid_action"
 	NotificationManagementKeyInvalidContent    = "notification_management_invalid_content"
 	NotificationManagementKeyInvalidSendOption = "notification_management_invalid_send_option"
-	NotificationManagementKeyListUserEmpty     = "notification_management_list_user_empty"
+	NotificationManagementKeyListUsersEmpty    = "notification_management_list_user_empty"
 	NotificationManagementKeyCannotSend        = "notification_management_cannot_send"
 	NotificationManagementKeyInvalidSender     = "notification_management_invalid_sender"
 )
@@ -46,7 +46,7 @@ var notificationManagement = []Locale{
 		Code:    505,
 	},
 	{
-		Key:     NotificationManagementKeyListUserEmpty,
+		Key:     NotificationManagementKeyListUsersEmpty,
 		Message: "danh sách khách hàng không được trống",
 		Code:    506,
 	},
