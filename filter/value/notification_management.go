@@ -42,6 +42,24 @@ var NotificationManagementListTargets = []filtermodel.CommonIDAndName{
 	},
 }
 
+// NotificationManagementListStatuses ...
+var NotificationManagementListStatuses = []filtermodel.CommonIDAndName{
+	{
+		ID: constant.NotificationSendStatusPending,
+		Name: model.MultiLang{
+			En: "Pending",
+			Vi: "Chưa gửi",
+		},
+	},
+	{
+		ID: constant.NotificationSendStatusSent,
+		Name: model.MultiLang{
+			En: "Sent",
+			Vi: "Đã gửi",
+		},
+	},
+}
+
 // NotificationManagementListActions ...
 var NotificationManagementListActions = []filtermodel.NotificationManagementAction{
 	{
