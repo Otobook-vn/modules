@@ -2,8 +2,6 @@ package model
 
 import (
 	"time"
-
-	"gorm.io/datatypes"
 )
 
 // NotificationManagement ...
@@ -16,10 +14,8 @@ type NotificationManagement struct {
 	Content     string
 	ActionType  string
 	ActionValue string
-	ActionData  datatypes.JSON
 	Target      string // all_users, by_list
 	Status      string // pending, sent
-	StatsSent   int64  // total sent
 	CreatedAt   time.Time
 	SentAt      time.Time
 
