@@ -9,6 +9,13 @@ import (
 // UserListGroups ...
 var UserListGroups = []filtermodel.CommonIDAndName{
 	{
+		ID: "all",
+		Name: model.MultiLang{
+			En: "All",
+			Vi: "Tất cả",
+		},
+	},
+	{
 		ID: constant.UserGroupNormal,
 		Name: model.MultiLang{
 			En: "Normal",
