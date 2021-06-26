@@ -29,5 +29,13 @@ var (
 	NotificationTypeConsultQuestionUserRating              = "consult_question_user_rating"
 	NotificationTypeConsultQuestionResolved                = "consult_question_resolved"
 
+	NotificationActionOpenAppPopup              = "open_app_popup"
+	NotificationActionOpenExternalURL           = "open_external_url"
+	NotificationActionOpenListCarServices       = "open_list_car_services"
+	NotificationActionOpenCarServiceDetail      = "open_car_service_detail"
+	NotificationActionOpenListArticles          = "open_list_articles"
+	NotificationActionOpenArticleDetail         = "open_article_detail"
+	NotificationActionOpenListConsultQuestions  = "open_list_consult_questions"
 	NotificationActionOpenConsultQuestionDetail = "open_consult_question_detail"
+	NotificationActionOpenListNotifications     = "open_list_notifications"
 )
