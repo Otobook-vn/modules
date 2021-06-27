@@ -11,7 +11,6 @@ type NotificationManagement struct {
 	ID                  string `gorm:"primaryKey"`
 	Language            string // vi, en
 	Category            string // common, consult
-	UserGroup           string // all, normal, specialist
 	Title               string
 	Content             string
 	ActionType          string
