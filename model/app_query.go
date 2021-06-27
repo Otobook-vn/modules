@@ -42,7 +42,7 @@ type AppQuery struct {
 
 // SetLimitMaxValue ...
 func (q *AppQuery) SetLimitMaxValue() {
-	if q.Limit > 50 || q.Limit < 0 {
+	if q.Limit > 50 || q.Limit < 1 {
 		q.Limit = 50
 	}
 }
