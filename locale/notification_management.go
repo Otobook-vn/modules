@@ -12,6 +12,7 @@ const (
 	NotificationManagementKeyCannotSend         = "notification_management_cannot_send"
 	NotificationManagementKeyInvalidSender      = "notification_management_invalid_sender"
 	NotificationManagementKeyInvalidActionValue = "notification_management_invalid_action_value"
+	NotificationManagementKeyCannotEdit         = "notification_management_cannot_edit"
 )
 
 // 500-549
@@ -65,5 +66,10 @@ var notificationManagement = []Locale{
 		Key:     NotificationManagementKeyInvalidActionValue,
 		Message: "giá trị của hành động không hợp lệ",
 		Code:    509,
+	},
+	{
+		Key:     NotificationManagementKeyCannotEdit,
+		Message: "thông báo hiện không thể chỉnh sửa",
+		Code:    510,
 	},
 }
