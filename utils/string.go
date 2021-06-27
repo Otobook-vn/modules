@@ -50,6 +50,12 @@ func TransformKeywordToSearchString(keyword string) string {
 	return s + ":*" // For prefix search
 }
 
+// TransformKeywordToSearchILike ...
+func TransformKeywordToSearchILike(keyword string) string {
+	s := strings.TrimSpace(keyword)
+	return "%" + strings.ToLower(s) + "%"
+}
+
 // FormatPhoneFull ...
 func FormatPhoneFull(countryCode, number string) string {
 	// Country code always format as: +{country_code}, ex: +84
