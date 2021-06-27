@@ -30,6 +30,7 @@ const (
 	CommonKeyUserOtobookNotFound                   = "common_user_otobook_not_found"
 	CommonKeyInvalidCarPartID                      = "common_invalid_car_part_id"
 	CommonKeyInvalidUserID                         = "common_invalid_user_id"
+	CommonKeyInvalidKeyword                        = "common_invalid_keyword"
 )
 
 // 1-99
@@ -168,5 +169,10 @@ var common = []Locale{
 		Key:     CommonKeyInvalidUserID,
 		Message: "người dùng không hợp lệ",
 		Code:    27,
+	},
+	{
+		Key:     CommonKeyInvalidKeyword,
+		Message: "từ khóa không hợp lệ",
+		Code:    28,
 	},
 }
