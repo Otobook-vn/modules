@@ -2,6 +2,8 @@ package model
 
 import (
 	"time"
+
+	"github.com/Otobook-vn/modules/constant"
 )
 
 // NotificationManagement ...
@@ -32,4 +34,9 @@ type NotificationManagement struct {
 // TableName overrides the table name
 func (NotificationManagement) TableName() string {
 	return "notification_managements"
+}
+
+// IsSent ...
+func (n NotificationManagement) IsSent() bool {
+	return n.Status == constant.NotificationSendStatusSent
 }
