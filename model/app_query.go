@@ -12,6 +12,9 @@ type AppQuery struct {
 	Timestamp       time.Time
 	Limit           int
 	Keyword         string
+	Email           string
+	Name            string
+	Phone           string
 	Status          string
 	Role            string
 	Group           string

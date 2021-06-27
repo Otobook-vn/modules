@@ -1,8 +1,11 @@
 package model
 
+import "time"
+
 // NotificationManagementListUser ...
 type NotificationManagementListUser struct {
-	ID string `gorm:"primaryKey"`
+	ID        string `gorm:"primaryKey"`
+	CreatedAt time.Time
 
 	// Ref
 	NotificationManagement   NotificationManagement `gorm:"foreignKey:NotificationManagementID"`
