@@ -12,6 +12,7 @@ type ArticleTopic struct {
 	ID           string `gorm:"primaryKey"`
 	Name         datatypes.JSON
 	Desc         datatypes.JSON
+	Icon         datatypes.JSON
 	Status       string
 	SearchTokens TsVector
 	CreatedAt    time.Time
