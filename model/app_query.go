@@ -38,6 +38,7 @@ type AppQuery struct {
 	Code            string
 	Target          string
 	Sender          string
+	Notification    string
 }
 
 // SetLimitMaxValue ...

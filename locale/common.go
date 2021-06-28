@@ -31,6 +31,7 @@ const (
 	CommonKeyInvalidCarPartID                      = "common_invalid_car_part_id"
 	CommonKeyInvalidUserID                         = "common_invalid_user_id"
 	CommonKeyInvalidKeyword                        = "common_invalid_keyword"
+	CommonKeyInvalidNotificationID                 = "common_invalid_notification_id"
 )
 
 // 1-99
@@ -174,5 +175,10 @@ var common = []Locale{
 		Key:     CommonKeyInvalidKeyword,
 		Message: "từ khóa không hợp lệ",
 		Code:    28,
+	},
+	{
+		Key:     CommonKeyInvalidNotificationID,
+		Message: "id tin nhắn không hợp lệ",
+		Code:    29,
 	},
 }
