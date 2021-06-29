@@ -9,9 +9,9 @@ type NotificationManagementListUser struct {
 
 	// Ref
 	NotificationManagement   NotificationManagement `gorm:"foreignKey:NotificationManagementID"`
-	NotificationManagementID string
-	User                     User `gorm:"foreignKey:UserID"`
-	UserID                   string
+	NotificationManagementID string                 `gorm:"uniqueIndex:idx_notification_user"`
+	User                     User                   `gorm:"foreignKey:UserID"`
+	UserID                   string                 `gorm:"uniqueIndex:idx_notification_user"`
 }
 
 // TableName overrides the table name
