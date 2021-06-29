@@ -18,7 +18,7 @@ var (
 	}
 
 	NotificationSendStatusPending = "pending"
-	NotificationSendStatusSent    = "send"
+	NotificationSendStatusSent    = "sent"
 	NotificationSendStatusList    = []interface{}{
 		NotificationSendStatusPending, NotificationSendStatusSent,
 	}
