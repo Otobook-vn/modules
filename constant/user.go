@@ -13,6 +13,12 @@ var (
 
 	UserStatusActive = "active"
 	UserStatusBanned = "banned"
+	UserStatusList   = []interface{}{
+		UserStatusActive, UserStatusBanned,
+	}
 
-	UserRegisterFromApp = "app"
+	UserRegisterFromApp  = "app"
+	UserRegisterFromList = []interface{}{
+		UserRegisterFromApp,
+	}
 )

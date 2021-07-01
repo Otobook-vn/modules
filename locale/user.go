@@ -17,6 +17,7 @@ const (
 	UserKeyInvalidOSName           = "user_invalid_os_name"
 	UserKeyInvalidOSVersion        = "user_invalid_os_version"
 	UserKeyInvalidAppVersion       = "user_invalid_app_version"
+	UserKeyInvalidGroup            = "user_invalid_group"
 )
 
 // 250-299
@@ -95,5 +96,10 @@ var user = []Locale{
 		Key:     UserKeyInvalidAppVersion,
 		Message: "phiên bản app không hợp lệ",
 		Code:    264,
+	},
+	{
+		Key:     UserKeyInvalidGroup,
+		Message: "nhóm người dùng không hợp lệ",
+		Code:    265,
 	},
 }
