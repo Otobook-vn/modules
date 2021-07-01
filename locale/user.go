@@ -18,6 +18,7 @@ const (
 	UserKeyInvalidOSVersion        = "user_invalid_os_version"
 	UserKeyInvalidAppVersion       = "user_invalid_app_version"
 	UserKeyInvalidGroup            = "user_invalid_group"
+	UserKeyInvalidRegisterFrom     = "user_invalid_register_from"
 )
 
 // 250-299
@@ -101,5 +102,10 @@ var user = []Locale{
 		Key:     UserKeyInvalidGroup,
 		Message: "nhóm người dùng không hợp lệ",
 		Code:    265,
+	},
+	{
+		Key:     UserKeyInvalidRegisterFrom,
+		Message: "nguồn đăng ký không hợp lệ",
+		Code:    266,
 	},
 }
