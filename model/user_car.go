@@ -1,6 +1,10 @@
 package model
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/datatypes"
+)
 
 // UserCar ...
 type UserCar struct {
@@ -8,6 +12,7 @@ type UserCar struct {
 	Year         string
 	LicensePlate string
 	VINNumber    string
+	Photos       datatypes.JSON
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 
