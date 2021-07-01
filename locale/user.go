@@ -19,6 +19,8 @@ const (
 	UserKeyInvalidAppVersion       = "user_invalid_app_version"
 	UserKeyInvalidGroup            = "user_invalid_group"
 	UserKeyInvalidRegisterFrom     = "user_invalid_register_from"
+	UserKeyEmailExisted            = "user_email_existed"
+	UserKeyReferralCodeExisted     = "user_referral_code_existed"
 )
 
 // 250-299
