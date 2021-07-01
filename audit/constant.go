@@ -31,6 +31,7 @@ const (
 	TargetOtobookConsultCategory        = "consult-categories"
 	TargetOtobookConsultComment         = "consult-comments"
 	TargetOtobookNotificationManagement = "notification-managements"
+	TargetOtobookUser                   = "users"
 )
 
 // OtobookTargets ...
