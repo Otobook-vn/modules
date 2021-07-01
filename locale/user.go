@@ -19,6 +19,7 @@ const (
 	UserKeyInvalidAppVersion       = "user_invalid_app_version"
 	UserKeyInvalidGroup            = "user_invalid_group"
 	UserKeyInvalidRegisterFrom     = "user_invalid_register_from"
+	UserKeyCodeExisted             = "user_email_existed"
 	UserKeyEmailExisted            = "user_email_existed"
 	UserKeyReferralCodeExisted     = "user_referral_code_existed"
 )
@@ -109,5 +110,20 @@ var user = []Locale{
 		Key:     UserKeyInvalidRegisterFrom,
 		Message: "nguồn đăng ký không hợp lệ",
 		Code:    266,
+	},
+	{
+		Key:     UserKeyCodeExisted,
+		Message: "mã khách hàng đã tồn tại",
+		Code:    267,
+	},
+	{
+		Key:     UserKeyEmailExisted,
+		Message: "email đã tồn tại",
+		Code:    268,
+	},
+	{
+		Key:     UserKeyReferralCodeExisted,
+		Message: "mã giới thiệu đã tồn tại",
+		Code:    269,
 	},
 }
