@@ -32,6 +32,7 @@ const (
 	CommonKeyInvalidUserID                         = "common_invalid_user_id"
 	CommonKeyInvalidKeyword                        = "common_invalid_keyword"
 	CommonKeyInvalidNotificationID                 = "common_invalid_notification_id"
+	CommonKeErrorWhenUpdateData                    = "common_error_when_update_data"
 )
 
 // 1-99
@@ -180,5 +181,10 @@ var common = []Locale{
 		Key:     CommonKeyInvalidNotificationID,
 		Message: "id tin nhắn không hợp lệ",
 		Code:    29,
+	},
+	{
+		Key:     CommonKeErrorWhenUpdateData,
+		Message: "đã có lỗi khi cập nhật dữ liệu, vui lòng thử lại",
+		Code:    30,
 	},
 }
