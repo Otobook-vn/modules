@@ -19,7 +19,7 @@ const (
 	UserKeyInvalidAppVersion       = "user_invalid_app_version"
 	UserKeyInvalidGroup            = "user_invalid_group"
 	UserKeyInvalidRegisterFrom     = "user_invalid_register_from"
-	UserKeyCodeExisted             = "user_email_existed"
+	UserKeyCodeExisted             = "user_code_existed"
 	UserKeyEmailExisted            = "user_email_existed"
 	UserKeyReferralCodeExisted     = "user_referral_code_existed"
 )
