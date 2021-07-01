@@ -21,6 +21,8 @@ type User struct {
 	HashedPassword   string
 	Status           string
 	ReferralCode     string
+	Desc             string
+	ConsultantRating float64
 	LocationAddress  string
 	SearchTokens     TsVector
 	IsPhoneVerified  bool
