@@ -20,6 +20,7 @@ type AppQuery struct {
 	Group           string
 	CarBrand        string
 	CarModel        string
+	CarVersion      string
 	CarTransmission string
 	CarBodyStyle    string
 	CarPart         string
