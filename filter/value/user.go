@@ -41,3 +41,21 @@ var UserListRegisterFroms = []filtermodel.CommonIDAndName{
 		},
 	},
 }
+
+// UserListStatuses ...
+var UserListStatuses = []filtermodel.CommonIDAndName{
+	{
+		ID: constant.UserStatusActive,
+		Name: model.MultiLang{
+			En: "Active",
+			Vi: "Hoạt động",
+		},
+	},
+	{
+		ID: constant.UserStatusBanned,
+		Name: model.MultiLang{
+			En: "Banned",
+			Vi: "Khóa",
+		},
+	},
+}

@@ -14,3 +14,8 @@ func UserGroup(id, lang string) model.ResponseCommonIDAndName {
 func UserRegisterFrom(id, lang string) model.ResponseCommonIDAndName {
 	return CommonIDAndNameValue(filtervalue.UserListRegisterFroms, id, lang)
 }
+
+// UserStatus ...
+func UserStatus(id, lang string) model.ResponseCommonIDAndName {
+	return CommonIDAndNameValue(filtervalue.UserListStatuses, id, lang)
+}
