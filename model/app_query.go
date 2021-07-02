@@ -23,6 +23,10 @@ type AppQuery struct {
 	CarTransmission string
 	CarBodyStyle    string
 	CarPart         string
+	CarColor        string
+	CarLicensePlate string
+	CarVINNumber    string
+	Year            string
 	Province        int
 	District        int
 	Ward            int
