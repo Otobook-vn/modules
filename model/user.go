@@ -25,8 +25,10 @@ type User struct {
 	LocationAddress  string
 	SearchTokens     TsVector
 	IsPhoneVerified  bool
+	IsEmailVerified  bool
 	RegisterFrom     string
 	PhoneVerifiedAt  time.Time
+	EmailVerifiedAt  time.Time
 	LastActivatedAt  time.Time
 	CreatedAt        time.Time
 	UpdatedAt        time.Time
