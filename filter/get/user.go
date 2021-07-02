@@ -12,7 +12,7 @@ func UserGroup(id, lang string) model.ResponseCommonIDAndName {
 
 // UserRegisterFrom ...
 func UserRegisterFrom(id, lang string) model.ResponseCommonIDAndName {
-	return CommonIDAndNameValue(filtervalue.UserListRegisterFroms, id, lang)
+	return CommonIDAndNameValue(filtervalue.UserListRegisterFrom, id, lang)
 }
 
 // UserStatus ...
