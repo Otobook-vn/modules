@@ -53,7 +53,7 @@ func TransformKeywordToSearchString(keyword string) string {
 // TransformKeywordToSearchILike ...
 func TransformKeywordToSearchILike(keyword string) string {
 	s := strings.TrimSpace(keyword)
-	return "%" + strings.ToLower(s) + "%"
+	return "%" + s + "%"
 }
 
 // FormatPhoneFull ...

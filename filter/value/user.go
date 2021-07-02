@@ -30,3 +30,14 @@ var UserListGroups = []filtermodel.CommonIDAndName{
 		},
 	},
 }
+
+// UserListRegisterFroms ...
+var UserListRegisterFroms = []filtermodel.CommonIDAndName{
+	{
+		ID: constant.UserRegisterFromApp,
+		Name: model.MultiLang{
+			En: "App",
+			Vi: "App",
+		},
+	},
+}
