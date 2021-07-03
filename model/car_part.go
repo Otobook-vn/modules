@@ -10,6 +10,7 @@ import (
 type CarPart struct {
 	ID           string `gorm:"primaryKey"`
 	Name         datatypes.JSON
+	Slug         string
 	SearchTokens TsVector
 	Status       string
 	IsOther      bool
