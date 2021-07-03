@@ -53,3 +53,8 @@ func (u *User) GenerateSearchTokens() {
 	vecValue := strings.Join(values, " ")
 	u.SearchTokens = TsVector{Value: vecValue}
 }
+
+// HasStatus ...
+func (u *User) HasStatus(status string) bool {
+	return u.Status == status
+}
