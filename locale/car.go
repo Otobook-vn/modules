@@ -23,6 +23,7 @@ const (
 	CarKeyErrorCodeExisted               = "car_error_code_existed"
 	CarKeyErrorCodeInvalidName           = "car_error_code_invalid_name"
 	CarKeyErrorCodeInvalidDesc           = "car_error_code_invalid_desc"
+	CarKeyPartNameExisted                = "car_part_name_existed"
 )
 
 // 300-349
@@ -131,5 +132,10 @@ var car = []Locale{
 		Key:     CarKeyErrorCodeInvalidDesc,
 		Message: "mô tả mã lỗi không hợp lệ",
 		Code:    320,
+	},
+	{
+		Key:     CarKeyPartNameExisted,
+		Message: "tên bộ phận đã tồn tại",
+		Code:    321,
 	},
 }
