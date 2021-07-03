@@ -22,6 +22,7 @@ const (
 	UserKeyCodeExisted             = "user_code_existed"
 	UserKeyEmailExisted            = "user_email_existed"
 	UserKeyReferralCodeExisted     = "user_referral_code_existed"
+	UserKeyBanned                  = "user_banned"
 )
 
 // 250-299
@@ -125,5 +126,10 @@ var user = []Locale{
 		Key:     UserKeyReferralCodeExisted,
 		Message: "mã giới thiệu đã tồn tại",
 		Code:    269,
+	},
+	{
+		Key:     UserKeyBanned,
+		Message: "tài khoản của bạn đã bị khóa, vui lòng liên hệ Hỗ trợ Otobook để được trợ giúp",
+		Code:    270,
 	},
 }
