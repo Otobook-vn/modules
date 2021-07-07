@@ -8,13 +8,13 @@ import (
 
 // Notification ...
 type Notification struct {
-	ID        string `gorm:"primaryKey"`
-	Category  string
-	Type      string
-	TargetID  string
-	Data      datatypes.JSON // Custom format for each type of notification
-	IsRead    bool
-	CreatedAt time.Time
+	ID          string `gorm:"primaryKey"`
+	Category    string
+	Type        string
+	ActionValue string
+	Data        datatypes.JSON // Custom format for each type of notification
+	IsRead      bool
+	CreatedAt   time.Time
 
 	// Ref
 	User   User `gorm:"foreignKey:UserID"`
