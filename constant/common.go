@@ -28,8 +28,9 @@ var (
 	EchoContextKeyStaffID = "staffID"
 	EchoContextKeyUserID  = "userID"
 
-	Limit10 = 10
-	Limit20 = 20
+	Limit10  = 10
+	Limit20  = 20
+	Limit500 = 500
 
 	DateLayoutFull     = "2006-01-02T15:04:05.000Z"
 	DateLayoutYYYYMMDD = "2006-01-02"

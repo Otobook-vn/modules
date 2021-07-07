@@ -28,6 +28,8 @@ func (Notification) TableName() string {
 
 // NotificationData ...
 type NotificationData struct {
+	Title    string `json:"title,omitempty"`
+	Content  string `json:"content,omitempty"`
 	URL      string `json:"url,omitempty"`
 	Status   string `json:"status,omitempty"`
 	UserID   string `json:"userId,omitempty"`
