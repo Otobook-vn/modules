@@ -1,7 +1,6 @@
 package queuemodel
 
 import (
-	"firebase.google.com/go/v4/messaging"
 	"github.com/Otobook-vn/modules/model"
 )
 
@@ -11,9 +10,13 @@ type NotificationCreateAndPushSingle struct {
 	IsPush       bool
 }
 
-// NotificationPushByTokens ...
-type NotificationPushByTokens struct {
-	BatchID string
-	Tokens  []string
-	Message messaging.Message
+// NotificationAdminPushAll ...
+type NotificationAdminPushAll struct {
+	Data model.NotificationManagement
+}
+
+// NotificationAdminPushByListUsers ...
+type NotificationAdminPushByListUsers struct {
+	Data  model.NotificationManagement
+	Users []string
 }
