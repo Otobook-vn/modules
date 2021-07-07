@@ -17,6 +17,5 @@ type NotificationAdminPushAll struct {
 
 // NotificationAdminPushByListUsers ...
 type NotificationAdminPushByListUsers struct {
-	Data  model.NotificationManagement
-	Users []string
+	Data model.NotificationManagement
 }
