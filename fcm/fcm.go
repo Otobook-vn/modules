@@ -84,12 +84,14 @@ func NewInstance(config Config) error {
 		ProjectID: config.ProjectID,
 	}, opts)
 	if err != nil {
+		fmt.Println("Cannot init module FCM", err)
 		return errors.New("error when init Firebase app")
 	}
 
 	// Init messaging client
 	client, err := app.Messaging(ctx)
 	if err != nil {
+		fmt.Println("Cannot init module FCM", err)
 		return errors.New("error when init Firebase messaging client")
 	}
 
