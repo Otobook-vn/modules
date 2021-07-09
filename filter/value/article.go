@@ -29,4 +29,11 @@ var ArticleCategories = []filtermodel.CommonIDAndName{
 			Vi: "Cần biết",
 		},
 	},
+	{
+		ID: constant.ArticleCategoryCodeVideo,
+		Name: model.MultiLang{
+			En: "Video",
+			Vi: "Video",
+		},
+	},
 }

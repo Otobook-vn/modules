@@ -5,8 +5,9 @@ var (
 	ArticleCategoryCodeInformation = "information"
 	ArticleCategoryCodePromotion   = "promotion"
 	ArticleCategoryCodeNeedToKnow  = "need_to_know"
+	ArticleCategoryCodeVideo       = "video"
 	ArticleCategoryList            = []interface{}{
-		ArticleCategoryCodeInformation, ArticleCategoryCodePromotion, ArticleCategoryCodeNeedToKnow,
+		ArticleCategoryCodeInformation, ArticleCategoryCodePromotion, ArticleCategoryCodeNeedToKnow, ArticleCategoryCodeVideo,
 	}
 
 	ArticleDisplayTypeOpenURL    = "open_url"
