@@ -10,6 +10,7 @@ const (
 	ArticleKeyTopicInvalidName       = "article_topic_invalid_name"
 	ArticleKeyTopicInvalidCategory   = "article_topic_invalid_category"
 	ArticleKeyInvalidDisplayType     = "article_invalid_display_type"
+	ArticleKeyTopicExisted           = "article_topic_existed"
 )
 
 // 400-449
@@ -53,5 +54,10 @@ var article = []Locale{
 		Key:     ArticleKeyInvalidDisplayType,
 		Message: "loại hiển thị không hợp lệ",
 		Code:    407,
+	},
+	{
+		Key:     ArticleKeyTopicExisted,
+		Message: "tên chủ đề đã tồn tại",
+		Code:    408,
 	},
 }
