@@ -41,3 +41,8 @@ func (s *Staff) GenerateSearchTokens() {
 func (s Staff) IsRole(role string) bool {
 	return s.RoleID == role
 }
+
+// HasStatus ...
+func (s Staff) HasStatus(status string) bool {
+	return s.Status == status
+}
