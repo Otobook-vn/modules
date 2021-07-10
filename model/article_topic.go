@@ -13,6 +13,7 @@ type ArticleTopic struct {
 	Name         datatypes.JSON
 	Desc         datatypes.JSON
 	Icon         datatypes.JSON
+	Slug         string
 	Status       string
 	SearchTokens TsVector
 	CreatedAt    time.Time
