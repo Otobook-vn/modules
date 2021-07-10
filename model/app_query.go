@@ -44,6 +44,7 @@ type AppQuery struct {
 	Target          string
 	Sender          string
 	Notification    string
+	RegisterFrom    string
 }
 
 // SetLimitMaxValue ...
