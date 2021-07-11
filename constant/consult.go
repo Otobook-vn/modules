@@ -16,6 +16,7 @@ var (
 	ConsultHistoryActionUserCreateQuestion      = "user_create_question"
 	ConsultHistoryActionUserEditQuestion        = "user_edit_question"
 	ConsultHistoryActionUserReopenQuestion      = "user_reopen_question"
+	ConsultHistoryActionUserDeleteQuestion      = "user_delete_question"
 	ConsultHistoryActionAdminChangeStatus       = "admin_change_status"
 	ConsultHistoryActionSpecialistMarkCompleted = "specialist_mark_completed"
 	ConsultHistoryActionSystemAutoResolve       = "system_auto_resolve"
