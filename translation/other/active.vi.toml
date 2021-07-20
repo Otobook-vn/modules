@@ -1,3 +1,23 @@
+[status_review]
+description = "Status review"
+other = "Đang chờ duyệt"
+
+[status_open]
+description = "Status open"
+other = "Duyệt"
+
 [status_reject]
 description = "Status reject"
 other = "Từ chối"
+
+[status_completed]
+description = "Status completed"
+other = "Đã trả lời"
+
+[status_resolved]
+description = "Status resolved"
+other = "Đã hoàn thành"
+
+[status_closed]
+description = "Status closed"
+other = "Đã đóng"
