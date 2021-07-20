@@ -9,18 +9,6 @@ service Notification {
   rpc AllByUserID(AllByUserIDRequest) returns (AllByUserIDResponse);
 }
 
-message AllByUserIDRequest {
-  string userID = 1;
-  string lang = 2;
-  google.protobuf.Timestamp timestamp = 3;
-  int32 limit = 4;
-  string category = 5;
-}
-
-message AllByUserIDResponse {
-  repeated NotificationDetail notifications = 1;
-}
-
 message NotificationDetail{
   string id = 1;
   string title = 2;
@@ -34,4 +22,33 @@ message NotificationDetail{
 message NotificationAction {
   string type = 1;
   string value = 2;
+}
+
+//
+// All by user id
+//
+
+message AllByUserIDRequest {
+  string userID = 1;
+  string lang = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  int32 limit = 4;
+  string category = 5;
+}
+
+message AllByUserIDResponse {
+  repeated NotificationDetail notifications = 1;
+}
+
+//
+// Read
+//
+
+message ReadRequest {
+  string userID = 1;
+  string notificationID = 2;
+}
+
+message ReadResponse {
+  bool success = 1;
 }
