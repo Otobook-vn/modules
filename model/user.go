@@ -9,29 +9,30 @@ import (
 
 // User ...
 type User struct {
-	ID               string `gorm:"primaryKey"`
-	Group            string
-	Code             string
-	Name             string
-	PhoneCountryCode string
-	PhoneNumber      string
-	PhoneFull        string
-	Email            string
-	Avatar           string
-	HashedPassword   string
-	Status           string
-	ReferralCode     string
-	Desc             string
-	LocationAddress  string
-	SearchTokens     TsVector
-	IsPhoneVerified  bool
-	IsEmailVerified  bool
-	RegisterFrom     string
-	PhoneVerifiedAt  time.Time
-	EmailVerifiedAt  time.Time
-	LastActivatedAt  time.Time
-	CreatedAt        time.Time
-	UpdatedAt        time.Time
+	ID                     string `gorm:"primaryKey"`
+	Group                  string
+	Code                   string
+	Name                   string
+	PhoneCountryCode       string
+	PhoneNumber            string
+	PhoneFull              string
+	Email                  string
+	Avatar                 string
+	HashedPassword         string
+	Status                 string
+	ReferralCode           string
+	Desc                   string
+	LocationAddress        string
+	SearchTokens           TsVector
+	IsPhoneVerified        bool
+	IsEmailVerified        bool
+	RegisterFrom           string
+	PhoneVerifiedAt        time.Time
+	EmailVerifiedAt        time.Time
+	LastActivatedAt        time.Time
+	LastReadNotificationAt time.Time
+	CreatedAt              time.Time
+	UpdatedAt              time.Time
 
 	// Ref
 	LocationProvince   LocationProvince `gorm:"foreignKey:LocationProvinceID"`
