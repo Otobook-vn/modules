@@ -32,7 +32,7 @@ func (Staff) TableName() string {
 
 // GenerateSearchTokens ...
 func (s *Staff) GenerateSearchTokens() {
-	values := []string{utils.RemoveDiacritics(s.Name), s.Phone}
+	values := []string{utils.RemoveDiacritics(s.Name), s.Phone, s.Username, s.Code, s.Email}
 	vecValue := strings.Join(values, " ")
 	s.SearchTokens = TsVector{Value: vecValue}
 }
