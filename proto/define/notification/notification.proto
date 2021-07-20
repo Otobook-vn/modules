@@ -7,6 +7,7 @@ option go_package = "./;pb";
 
 service Notification {
   rpc AllByUserID(AllByUserIDRequest) returns (AllByUserIDResponse);
+  rpc Read(ReadRequest) returns (ReadResponse);
 }
 
 message NotificationDetail{
