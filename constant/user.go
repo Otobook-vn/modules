@@ -17,8 +17,9 @@ var (
 		UserStatusActive, UserStatusBanned,
 	}
 
-	UserRegisterFromApp  = "app"
-	UserRegisterFromList = []interface{}{
+	UserRegisterFromApp   = "app"
+	UserRegisterFromOther = "other"
+	UserRegisterFromList  = []interface{}{
 		UserRegisterFromApp,
 	}
 )

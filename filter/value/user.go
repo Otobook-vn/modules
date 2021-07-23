@@ -33,6 +33,13 @@ var UserListRegisterFrom = []filtermodel.CommonIDAndName{
 			Vi: "App",
 		},
 	},
+	{
+		ID: constant.UserRegisterFromOther,
+		Name: model.MultiLang{
+			En: "Other",
+			Vi: "Other",
+		},
+	},
 }
 
 // UserListStatuses ...
