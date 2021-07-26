@@ -17,3 +17,7 @@ other = "Người dùng {{.UserName}} vừa đánh gia phần tư vấn của b�
 [consult_question_resolved]
 description = "Câu hỏi tư vấn đã được xử lý thành công"
 other = "Câu hỏi của bạn đã được xử lý thành công. Bạn có thể tiếp tục bình luận vào câu hỏi nếu có thêm thắc mắc"
+
+[consult_question_user_liked]
+description = "Người dùng khác thích câu hỏi của bạn"
+other = "{{.UserName}} vừa thích câu hỏi tư vấn của bạn"

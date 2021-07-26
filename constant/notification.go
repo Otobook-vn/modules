@@ -28,6 +28,7 @@ var (
 	NotificationTypeConsultQuestionHasNewComment           = "consult_question_has_new_comment"
 	NotificationTypeConsultQuestionUserRating              = "consult_question_user_rating"
 	NotificationTypeConsultQuestionResolved                = "consult_question_resolved"
+	NotificationTypeConsultQuestionUserLiked               = "consult_question_user_liked"
 
 	NotificationActionOpenAppPopup              = "open_app_popup"
 	NotificationActionOpenExternalURL           = "open_external_url"

@@ -17,3 +17,8 @@ other = "User {{.UserName}} has rated your consultation"
 [consult_question_resolved]
 description = "Consult question resolved"
 other = "Your question has been resolved"
+
+
+[consult_question_user_liked]
+description = "Other user liked your consult question"
+other = "{{.UserName}} likes your question"
